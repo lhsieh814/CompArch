@@ -1,3 +1,6 @@
 .DS_Store
 *.cf:wq
 
+/Assembler/Assembler/nbproject/private/
+/Assembler/Assembler/dist/
+/Assembler/Assembler/build/
