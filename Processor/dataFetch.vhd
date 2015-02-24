@@ -5,11 +5,11 @@ use work.MIPSCPU_constants.ALL;
 ENTITY dataFetch IS
 PORT(
 	clk : in std_logic;
-	nextAddress : in integer;
+	nextAddress : in integer := 0;
 	instruction : out std_logic_vector(register_size downto 0);
 	instReady : out std_logic := '0';
-	fetchNext : in std_logic := '0';
-	readOrWrite : in std_logic := '0';
+	fetchNext : in std_logic := '1';
+	readOrWrite : in std_logic := '1';
 	dataToWrite : out std_logic_vector(register_size downto 0);
 	output : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 	writeSuccess : out std_logic :='0'
@@ -17,7 +17,7 @@ PORT(
 END dataFetch;
 
 ARCHITECTURE behavior OF dataFetch IS
-	type state_type is (init, read_mem1, read_mem2, write_mem1, write_mem2,waiting);
+	type state_type is (init, read_mem1, read_mem2, write_mem1, sdump,waiting);
 	Constant Num_Bits_in_Byte: integer := 8; 
 	Constant Num_Bytes_in_Word: integer := 4; 
 	Constant Memory_Size: integer := 256; 
@@ -99,6 +99,8 @@ BEGIN
 					writeSuccess <='0';
 					initialize <= '0';
 					address <= nextAddress;
+					re<='0';
+					we<='0';
 					if(readOrWrite ='0' and fetchNext = '1') then
 						state <= read_mem1;
 					elsif(readOrWrite ='1' and fetchNext = '1') then
@@ -127,24 +129,28 @@ BEGIN
 						instReady <='0';
 					end if;
 				when write_mem1 =>
+					address <= nextAddress;
 					we <='1';
 					re <='0';
 					initialize <= '0';
 					dump <= '0';
-					data <= "ZZZZZZZZZZZZZZZZZZZZZZZZ00001100";
-					state <= write_mem2;
-					instReady <='0';
-				when write_mem2 =>
+					data <= dataToWrite;
+					
 					if (wr_done = '1') then -- the output is ready on the memory bus
-						state <= waiting; --write finished go to the dump state
-						instReady <='1';
-						writeSuccess<='1';
+						state <= sdump; --write finished go to the dump state
+						writeSuccess <='1';
 					else
-						state <= write_mem2; -- stay in this state till you see wr_done='1';
+						state <= write_mem1; -- stay in this state till you see rd_ready='1';
 					end if;	
-				
+					
+				when sdump =>
+					initialize <= '0'; 
+					re<='0';
+					we<='0';
+					dump <= '1'; --triggerd
+					state <= waiting;
+				when others =>
 			end case;
-			
 		end if;
    end process;
 
