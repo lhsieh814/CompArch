@@ -3,19 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util;
+
 
 /**
  *
  * @author Gavin
  */
 import java.util.*;
-public class LoadRS {
-	// 2 entries
+public class LoadStoreQueue {
+	// 4 Entries
 	public ArrayList<Integer> DestID = new ArrayList<Integer>();
-	// value loaded to the operand
-	public ArrayList<Long> Value = new ArrayList<Long>();
+	public ArrayList<Long> Address = new ArrayList<Long>();
+	// value at the memory location specified by Address.
+	public ArrayList<Long> value = new ArrayList<Long>();
+	// state information.
 	public ArrayList<String> Instruction = new ArrayList<String>();
-	// operand to which value is loaded
-	public ArrayList<String> Operand = new ArrayList<String>(); 
+	public ArrayList<String> ExecState = new ArrayList<String>();
+
 }
