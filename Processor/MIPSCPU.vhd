@@ -33,14 +33,18 @@ END component;
 --testing stuff
 signal clk : std_logic := '0';
 signal instructionReady : std_logic := '0';
+signal nextAddress : integer := 0;
+signal PCIn : integer := 0;
 signal instData : STD_LOGIC_VECTOR(register_size DOWNTO 0);
 signal instReg_opc_31to26 : STD_LOGIC_VECTOR(5 DOWNTO 0);
 signal instReg_s_25to21 : STD_LOGIC_VECTOR(4 DOWNTO 0);
 signal instReg_t_16to20: STD_LOGIC_VECTOR(4 DOWNTO 0);
 signal instReg_i_0to15 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+
 constant clk_period : time := 100 ns;
 
 begin
+
    -- Clock process definitions
    clk_process : process
    begin
@@ -51,10 +55,21 @@ begin
    end process;
 
 
+
+
+pc : programCounter
+PORT MAP(
+	clk=>clk,
+	reset=>'0',
+	writeEnable=>instructionReady,
+	PCIn=>PCIn,
+	PCOut=>nextAddress
+);
+
 instFetch : instructionFetch
 PORT MAP(
 	clk=>clk,
-	nextAddress=>4,-- to be from PC or instructionregister
+	nextAddress=>nextAddress,
 	instruction=>instData,
 	instReady=>instructionReady,
 	fetchNext=>'1',

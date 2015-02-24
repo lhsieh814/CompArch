@@ -7,8 +7,8 @@ PORT(
 	clk : in std_logic;
 	nextAddress : in integer;
 	instruction : out std_logic_vector(register_size downto 0);
-	instReady : out std_logic;
-	fetchNext : in std_logic;
+	instReady : out std_logic := '0';
+	fetchNext : in std_logic := '0';
 	instReg_opc_31to26 : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
 	instReg_s_25to21 : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
 	instReg_t_16to20: OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
@@ -112,10 +112,10 @@ BEGIN
 						instReg_s_25to21 <= data(25 DOWNTO 21);
 						instReg_t_16to20<= data(20 DOWNTO 16);
 						instReg_i_0to15 <= data(15 DOWNTO 0);
-						state <= waiting; --read finished go to test state write 
 						address <= nextAddress;
 						re <='0';
 						instReady <='1';
+						state <= waiting; --read finished go to test state write 
 					else
 						state <= read_mem2; -- stay in this state till you see rd_ready='1';
 						instReady <='0';
