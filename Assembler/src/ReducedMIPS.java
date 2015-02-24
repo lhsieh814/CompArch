@@ -1,9 +1,9 @@
-package javaapplication9;
-
-// Reduced MIPS Assembler
-//
-// Author: Sam H.
-// Last Edited: 3/16/14
+/**
+ * ECSE 415 Project, Assembler Implementation
+ * Author: Yang Zhou
+ * Group 6
+ * Members: Yukun Su, Yang Zhou, Wei Sing Ta, Lena Hsieh
+ */
 
 import java.util.Scanner;
 

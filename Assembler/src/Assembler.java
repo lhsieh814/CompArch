@@ -1,4 +1,9 @@
-package javaapplication9;
+/**
+ * ECSE 415 Project, Assembler Implementation
+ * Author: Yang Zhou
+ * Group 6
+ * Members: Yukun Su, Yang Zhou, Wei Sing Ta, Lena Hsieh
+ */
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,6 +31,7 @@ public class Assembler {
         instructionCodes.put("add", "100000");
         instructionCodes.put("sub", "100010");
         instructionCodes.put("mult", "011000");
+        instructionCodes.put("div", "011010");
         instructionCodes.put("and", "100100");
         instructionCodes.put("or", "100101");
         instructionCodes.put("nor", "100111");
@@ -65,6 +71,7 @@ public class Assembler {
         instructions.put("srl", instructionR_shift);
         instructions.put("jr", instructionR_jr);
         instructions.put("mult", instructionR_mul);
+        instructions.put("div", instructionR_mul);
 
         // I-Type Instructions
         instructions.put("addi", instructionI_std);
@@ -85,13 +92,16 @@ public class Assembler {
         instructions.put("mflo", instructionR_move);
     }
 
+    /**
+     * Initialize all registers, with register name, number, call convention
+     */
     private static void initRegisterCodes() {
-        // Constant 0
+        // The Constant Value 0
         registers.put("$zero", "00000");
-        // Assembler temporary
+        // Assembler Temporary
         registers.put("$at", "00001");
 
-        // Function results & expression evaluation
+        // Function Results & Expression Evaluation
         registers.put("$v0", "00010");
         registers.put("$v1", "00011");
 
@@ -111,7 +121,7 @@ public class Assembler {
         registers.put("$t6", "01110");
         registers.put("$t7", "01111");
 
-        // Saved temporaries
+        // Saved Temporaries
         registers.put("$s0", "10000");
         registers.put("$s1", "10001");
         registers.put("$s2", "10010");
@@ -129,17 +139,19 @@ public class Assembler {
         registers.put("$k0", "11010");
         registers.put("$k1", "11011");
 
-        // Global pointer
+        // Global Pointer
         registers.put("$gp", "11100");
-        // Stack pointer
+        // Stack Pointer
         registers.put("$sp", "11101");
-        // Frame pointer
+        // Frame Pointer
         registers.put("$fp", "11110");
-        // Return address
+        // Return Address
         registers.put("$ra", "11111");
     }
 
-    // Interface to allow instruction mapping to a parse function
+    /**
+     * Interface to allow instruction mapping to a parse function
+     */
     private interface instructionParser {
 
         void parse(String[] parts);
@@ -160,7 +172,11 @@ public class Assembler {
         return bin;
     }
 
-    // Returns signed 16-bit binary representation of decimal value
+    /**
+     *  Returns signed 16-bit binary representation of decimal value
+     * @param dec decimal number input
+     * @return binary representation
+     */
     private static String parseSigned16BitBin(int dec) {
         //int decValue = Integer.parseInt(dec);
         String bin = Integer.toBinaryString(dec);
@@ -218,7 +234,7 @@ public class Assembler {
         return registers.get(reg);
     }
 
-    // Instructions: add, sub, and, or, nor, slt, mult
+    // Instructions: add, sub, and, or, nor, slt
     private static instructionParser instructionR_std = new instructionParser() {
         public void parse(String[] parts) {
             String opcode = "000000"; //instrCode.substring(2, 8);
@@ -232,7 +248,9 @@ public class Assembler {
         }
     };
 
-    // Instructions: mult
+    /**
+     *  Instructions for mult, div
+     */
     private static instructionParser instructionR_mul = new instructionParser() {
 
         public void parse(String[] parts){
