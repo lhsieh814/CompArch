@@ -8,7 +8,11 @@ PORT(
 	nextAddress : in integer;
 	instruction : out std_logic_vector(register_size downto 0);
 	instReady : out std_logic;
-	fetchNext : in std_logic
+	fetchNext : in std_logic;
+	instReg_opc_31to26 : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+	instReg_s_25to21 : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
+	instReg_t_16to20: OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
+	instReg_i_0to15 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
 );
 END instructionFetch;
 
@@ -103,13 +107,18 @@ BEGIN
 				when read_mem2 =>
 					re <='1';
 					if (rd_ready = '1') then -- the output is ready on the memory bus
-						MDR <= data;
+						instruction <= data;
+						instReg_opc_31to26 <= data(31 downto 26);
+						instReg_s_25to21 <= data(25 DOWNTO 21);
+						instReg_t_16to20<= data(20 DOWNTO 16);
+						instReg_i_0to15 <= data(15 DOWNTO 0);
 						state <= waiting; --read finished go to test state write 
 						address <= nextAddress;
 						re <='0';
 						instReady <='1';
 					else
 						state <= read_mem2; -- stay in this state till you see rd_ready='1';
+						instReady <='0';
 					end if;
 				when waiting =>
 					if(fetchNext = '1') then

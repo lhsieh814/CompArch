@@ -16,37 +16,30 @@ port(
 );
 end component;
 
-component instructionMem
-PORT (
-	clk : IN STD_LOGIC;
-	reset : IN STD_LOGIC;
-	instData : IN STD_LOGIC_VECTOR(register_size DOWNTO 0);
-	writeInst : IN STD_LOGIC;
-	instReg_opc_31to26 : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
-	instReg_s_25to21 : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
-	instReg_t_16to20: OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
-	instReg_i_0to15 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0) );
-END component;
-
 component instructionFetch IS
 PORT(
 	clk : in std_logic;
 	nextAddress : in integer;
 	instruction : out std_logic_vector(register_size downto 0);
 	instReady : out std_logic;
-	fetchNext : in std_logic
+	fetchNext : in std_logic;
+	instReg_opc_31to26 : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+	instReg_s_25to21 : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
+	instReg_t_16to20: OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
+	instReg_i_0to15 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
 );
 END component;
 
 --testing stuff
 signal clk : std_logic := '0';
-signal instructionReady : std_logic;
+signal instructionReady : std_logic := '0';
 signal instData : STD_LOGIC_VECTOR(register_size DOWNTO 0);
 signal instReg_opc_31to26 : STD_LOGIC_VECTOR(5 DOWNTO 0);
 signal instReg_s_25to21 : STD_LOGIC_VECTOR(4 DOWNTO 0);
 signal instReg_t_16to20: STD_LOGIC_VECTOR(4 DOWNTO 0);
 signal instReg_i_0to15 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-   constant clk_period : time := 10 ns;
+constant clk_period : time := 100 ns;
+
 begin
    -- Clock process definitions
    clk_process : process
@@ -61,21 +54,14 @@ begin
 instFetch : instructionFetch
 PORT MAP(
 	clk=>clk,
-	nextAddress=>0,-- to be from PC or inst>ructionregister
+	nextAddress=>4,-- to be from PC or instructionregister
 	instruction=>instData,
 	instReady=>instructionReady,
-	fetchNext=>'1'
-);
-
-instMem : instructionMem
-PORT MAP(
-	clk=>clk,
-	reset=>'0',
-	instData=>instData,
-	writeInst=>'1',
+	fetchNext=>'1',
 	instReg_opc_31to26=>instReg_opc_31to26,
 	instReg_s_25to21=>instReg_s_25to21,
 	instReg_t_16to20=>instReg_t_16to20,
-	instReg_i_0to15=>instReg_i_0to15);
+	instReg_i_0to15=>instReg_i_0to15
+);
 
 END;

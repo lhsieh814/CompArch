@@ -19,7 +19,7 @@ ARCHITECTURE behv OF instructionMem IS
 BEGIN	
 	PROCESS(clk, reset)
 	BEGIN
-		IF reset = '0' THEN
+		IF reset = '1' THEN
 			instReg_opc_31to26 <= (OTHERS => '0'); 
 			instReg_s_25to21 <= (OTHERS => '0'); 
 			instReg_t_16to20 <= (OTHERS => '0'); 
