@@ -9,14 +9,14 @@ ENTITY ALUOP IS
 		ALU_CTRL: out std_logic_vector(3 downto 0);
 		Clk: in std_logic
 	);
-END ALUOP
+END ALUOP;
 
 ARCHITECTURE behavior of ALUOP IS
 BEGIN
 	process(clk)
 	BEGIN
 		if(clk'event and clk = '1') then
-			if(ALU_OP = '100') then
+			if ALU_OP = "100" then
 				case FUNC IS
 				 	when "100000" => --ADD
 				 		ALU_Ctrl <= "0000";
@@ -48,6 +48,7 @@ BEGIN
 				 		ALU_Ctrl <= "1101";
 				 	when "001000" => --JR
 				 		ALU_Ctrl <= "1110";
+					when others =>
 				 END case;
 			if(ALU_OP = "010") then --branch, sub
 				ALU_Ctrl <= "1101";
