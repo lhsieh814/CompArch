@@ -59,9 +59,6 @@ ARCHITECTURE behavior OF instructionFetch IS
 	
 	-- Tests Simulation State 
 	signal state:	state_type:=init;
-	
-	--Memory Data Read
-	signal MDR: std_logic_vector(Num_Bytes_in_Word*Num_Bits_in_Byte-1 downto 0);
  
 BEGIN
    main_mem: Main_Memory 
@@ -77,7 +74,7 @@ BEGIN
 		PORT MAP (
           clk => clk,
           address => address,
-          Word_Byte => '0',
+          Word_Byte => '1',
           we => we,
           wr_done => wr_done,
           re => re,
@@ -122,6 +119,7 @@ BEGIN
 					end if;
 				when waiting =>
 					if(fetchNext = '1') then
+						address <= nextAddress;
 						state <= read_mem1;
 					else state <= waiting;
 					end if;

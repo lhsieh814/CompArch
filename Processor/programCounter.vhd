@@ -8,6 +8,7 @@ port(
 	clk : IN STD_LOGIC;
 	reset : IN STD_LOGIC;
 	writeEnable : IN STD_LOGIC;
+	PCReady : OUT STD_LOGIC := '0';
 	PCIn : IN integer := 0;
 	PCOut : OUT integer := 0
 );
@@ -23,6 +24,8 @@ begin
 		elsif RISING_EDGE(clk) then 
 			if writeEnable = '1' then
 				currentPC := PCIn;
+				PCReady<='1';
+			else PCReady<='0';
 			end if;
 		end if;
 		PCOut <= currentPC;

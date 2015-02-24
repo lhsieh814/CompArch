@@ -11,6 +11,7 @@ port(
 	clk : IN STD_LOGIC;
 	reset : IN STD_LOGIC;
 	writeEnable : IN STD_LOGIC;
+	PCReady : OUT STD_LOGIC;
 	PCIn : IN integer;
 	PCOut : OUT integer
 );
@@ -40,6 +41,7 @@ signal instReg_opc_31to26 : STD_LOGIC_VECTOR(5 DOWNTO 0);
 signal instReg_s_25to21 : STD_LOGIC_VECTOR(4 DOWNTO 0);
 signal instReg_t_16to20: STD_LOGIC_VECTOR(4 DOWNTO 0);
 signal instReg_i_0to15 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal PCReady : STD_LOGIC;
 
 constant clk_period : time := 100 ns;
 
@@ -54,7 +56,12 @@ begin
 		wait for clk_period/2;
    end process;
 
-
+incrementPC : process (instructionReady)
+begin
+if RISING_EDGE(instructionReady) then
+	PCIn <= PCIn +1;
+end if;
+end process;
 
 
 pc : programCounter
@@ -62,6 +69,7 @@ PORT MAP(
 	clk=>clk,
 	reset=>'0',
 	writeEnable=>instructionReady,
+	PCReady=>PCReady,
 	PCIn=>PCIn,
 	PCOut=>nextAddress
 );
@@ -72,7 +80,7 @@ PORT MAP(
 	nextAddress=>nextAddress,
 	instruction=>instData,
 	instReady=>instructionReady,
-	fetchNext=>'1',
+	fetchNext=>PCReady,
 	instReg_opc_31to26=>instReg_opc_31to26,
 	instReg_s_25to21=>instReg_s_25to21,
 	instReg_t_16to20=>instReg_t_16to20,
