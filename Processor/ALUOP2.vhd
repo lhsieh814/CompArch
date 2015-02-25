@@ -1,5 +1,7 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
+use work.MIPSCPU_constants.ALL;
+use IEEE.numeric_std.all;
 use STD.textio.all;
 
 ENTITY ALUOP2 IS
@@ -18,16 +20,66 @@ signal FUNC : std_logic_vector(5 downto 0);
 signal shamt : std_logic_vector(4 downto 0);
 signal rd : std_logic_vector(4 downto 0);
 signal ALU_OP : std_logic_vector(5 downto 0);
-type state_type is (init, rLoading1, rLoading2, rWriting1, rWriting2, iLoading1, iLoading2, iWriting1, iWriting2);
+type state_type is (init,waiting, rLoading1, rLoading2, rExecution ,rWriting, iLoading1, iLoading2, iLoading3, iExecution, iWriting);
 type action_state_type is (waiting,add,sub,addi,mult,div,slt,slti,aluand,aluor,alunor,aluxor,andi,ori,xori,mfhi,mflo,lui,alusll,alusrl,alusra,lw,lb,sw,sb,beq,bne,j,jr,jal);
 signal state: state_type:=init;
 signal action_state: action_state_type:=waiting;
+
+signal instReady : std_logic := '0';
+signal fetchNext : std_logic := '0';
+signal nextAddress : integer := 0;
+signal readOrWrite : std_logic := '0';
+signal dataToWrite  : std_logic_vector(register_size downto 0);
+signal output : std_logic_vector(register_size downto 0);
+
+signal regS : integer := 0;
+signal regT : integer := 0;
+signal regD : integer := 0;
+
+signal regSValue : std_logic_vector(register_size downto 0);
+signal regTValue : std_logic_vector(register_size downto 0);
+signal regDValue : std_logic_vector(register_size downto 0);
+
+signal unsignedSValue : unsigned(register_size downto 0);
+signal unsignedTValue : unsigned(register_size downto 0);
+signal unsignedDValue : unsigned(register_size downto 0);
+
+component dataFetch
+PORT(
+	clk : in std_logic;
+	nextAddress : in integer := 0;
+	instReady : out std_logic := '0';
+	fetchNext : in std_logic := '0';
+	readOrWrite : in std_logic := '0';
+	dataToWrite : in std_logic_vector(register_size downto 0);
+	output : OUT STD_LOGIC_VECTOR(register_size DOWNTO 0)
+);
+END component;
+
+
 BEGIN
+unsignedSValue<=unsigned(regSValue);
+unsignedTValue<=unsigned(regTValue);
+unsignedDValue<=unsigned(regDValue);
+
+dataFetcher : dataFetch
+PORT MAP(
+	clk=>clk,
+	nextAddress=>nextAddress,
+	instReady=>instReady,
+	fetchNext=>fetchNext,
+	readOrWrite=>readOrWrite,
+	dataToWrite=>dataToWrite,
+	output=>output
+);
+
 FUNC <= instReg_i_0to15(5 downto 0);
 shamt <= instReg_i_0to15(10 downto 6);
 rd <= instReg_i_0to15(15 downto 11);
 ALU_OP <= instReg_opc_31to26;
-	
+regS <= to_integer(unsigned(instReg_s_25to21));
+regT <= to_integer(unsigned(instReg_t_16to20));
+regD <= to_integer(unsigned(instReg_i_0to15(15 downto 11)));
 	process(clk)
 	BEGIN
 		if RISING_EDGE(Clk) then
@@ -141,13 +193,51 @@ ALU_OP <= instReg_opc_31to26;
 				action_state <= lui;
 			END if;
 			when rLoading1=>
+				nextAddress<=regS;
+				readOrWrite<='0';
+				fetchNext<='1';
+				if instReady = '1' then
+					regSValue<=output;
+					state <= rLoading2;
+				else
+					state<= rLoading1;
+				end if;
 			when rLoading2=>
-			when rWriting1=>
-			when rWriting2=>
+				nextAddress<=regT;
+				readOrWrite<='0';
+				fetchNext<='1';
+				if instReady = '1' then
+					fetchNext<='0';
+					regTValue<=output;
+					state <= rExecution;
+				else
+					state<= rLoading2;
+				end if;
+			when rExecution=>
+				case action_state is
+				when add => 
+					unsignedDValue <= unsignedSValue + unsignedTValue;
+					regDValue <= std_logic_vector(unsignedDValue);
+					state<=rWriting;				
+				when others =>
+				end case;
+			when rWriting=>
+				dataToWrite<=regDValue;
+				nextAddress<=regD;
+				readOrWrite<='1';
+				fetchNext<='1';
+				if instReady = '1' then
+					fetchNext<='0';
+					state <= waiting;
+				else
+					state<= rWriting;
+				end if;
 			when iLoading1=>
 			when iLoading2=>
-			when iWriting1=>
-			when iWriting2=>
+			when iLoading3=>
+			when iExecution=>
+			when iWriting=>
+			when waiting=>
 		end case;
 		END if;
 	END process;

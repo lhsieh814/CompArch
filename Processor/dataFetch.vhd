@@ -6,13 +6,11 @@ ENTITY dataFetch IS
 PORT(
 	clk : in std_logic;
 	nextAddress : in integer := 0;
-	instruction : out std_logic_vector(register_size downto 0);
 	instReady : out std_logic := '0';
-	fetchNext : in std_logic := '1';
-	readOrWrite : in std_logic := '1';
-	dataToWrite : out std_logic_vector(register_size downto 0);
-	output : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-	writeSuccess : out std_logic :='0'
+	fetchNext : in std_logic := '0';
+	readOrWrite : in std_logic := '0';
+	dataToWrite : in std_logic_vector(register_size downto 0);
+	output : OUT STD_LOGIC_VECTOR(register_size DOWNTO 0)
 );
 END dataFetch;
 
@@ -53,6 +51,7 @@ ARCHITECTURE behavior OF dataFetch IS
    signal data : std_logic_vector(Num_Bytes_in_Word*Num_Bits_in_Byte-1 downto 0) := (others => 'Z');
    signal initialize : std_logic := '0';
    signal dump : std_logic := '0';
+   signal word_byte :std_logic := '1';
 
    signal wr_done : std_logic;
    signal rd_ready : std_logic;
@@ -74,7 +73,7 @@ BEGIN
 		PORT MAP (
           clk => clk,
           address => address,
-          Word_Byte => '0',
+          Word_Byte => word_byte,
           we => we,
           wr_done => wr_done,
           re => re,
@@ -96,7 +95,7 @@ BEGIN
 					state <= waiting;
 				when waiting =>
 					instReady <='0';
-					writeSuccess <='0';
+					word_byte<='1';
 					initialize <= '0';
 					address <= nextAddress;
 					re<='0';
@@ -118,8 +117,7 @@ BEGIN
 				when read_mem2 =>
 					re <='1';
 					if (rd_ready = '1') then -- the output is ready on the memory bus
-						instruction <= data;
-						output <= data(7 DOWNTO 0);
+						output <= data;
 						address <= nextAddress;
 						re <='0';
 						instReady <='1';
@@ -129,24 +127,27 @@ BEGIN
 						instReady <='0';
 					end if;
 				when write_mem1 =>
-					address <= nextAddress;
+					address <= 12;
+					word_byte<='0';
 					we <='1';
 					re <='0';
 					initialize <= '0';
 					dump <= '0';
-					data <= dataToWrite;
+					data <= "ZZZZZZZZZZZZZZZZZZZZZZZZ00001100";
 					
 					if (wr_done = '1') then -- the output is ready on the memory bus
 						state <= sdump; --write finished go to the dump state
-						writeSuccess <='1';
+						instReady <= '1';
 					else
 						state <= write_mem1; -- stay in this state till you see rd_ready='1';
+						instReady <= '0';
 					end if;	
 					
 				when sdump =>
 					initialize <= '0'; 
 					re<='0';
 					we<='0';
+					word_byte<='1';
 					dump <= '1'; --triggerd
 					state <= waiting;
 				when others =>
