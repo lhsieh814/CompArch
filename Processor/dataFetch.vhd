@@ -52,7 +52,7 @@ ARCHITECTURE behavior OF dataFetch IS
    signal initialize : std_logic := '0';
    signal dump : std_logic := '0';
    signal word_byte :std_logic := '1';
-
+   signal fetchNext_delayed : std_logic := '0';
    signal wr_done : std_logic;
    signal rd_ready : std_logic;
 	
@@ -88,6 +88,7 @@ BEGIN
    begin		
       if RISING_EDGE(clk) then
 			data <= (others=>'Z');
+			fetchNext_delayed<=fetchNext;
 			case state is
 				when init =>
 					initialize <= '1'; --triggerd.
@@ -100,10 +101,12 @@ BEGIN
 					address <= nextAddress;
 					re<='0';
 					we<='0';
-					if(readOrWrite ='0' and fetchNext = '1') then
-						state <= read_mem1;
-					elsif(readOrWrite ='1' and fetchNext = '1') then
-						state <= write_mem1;
+					if fetchNext /= fetchNext_delayed and fetchNext_delayed='0' then
+						if(readOrWrite='0') then
+							state <= read_mem1;
+						elsif(readOrWrite='1') then
+							state <= write_mem1;
+						end if;
 					else 
 						state <= waiting;
 					end if;		
@@ -127,13 +130,13 @@ BEGIN
 						instReady <='0';
 					end if;
 				when write_mem1 =>
-					address <= 12;
-					word_byte<='0';
+					address <= nextAddress;
+					--word_byte<='0';
 					we <='1';
 					re <='0';
 					initialize <= '0';
 					dump <= '0';
-					data <= "ZZZZZZZZZZZZZZZZZZZZZZZZ00001100";
+					data <= dataToWrite;
 					
 					if (wr_done = '1') then -- the output is ready on the memory bus
 						state <= sdump; --write finished go to the dump state

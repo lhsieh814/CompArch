@@ -6,11 +6,10 @@ use STD.textio.all;
 
 ENTITY ALUOP2 IS
 	port (
-		instReg_opc_31to26 : in STD_LOGIC_VECTOR(5 DOWNTO 0);
-		instReg_s_25to21 : in STD_LOGIC_VECTOR(4 DOWNTO 0);
-		instReg_t_16to20: in STD_LOGIC_VECTOR(4 DOWNTO 0);
-		instReg_i_0to15 : in STD_LOGIC_VECTOR(15 DOWNTO 0);
-		ALU_CTRL: out std_logic_vector(4 downto 0);
+		instReg_opc_31to26 : in STD_LOGIC_VECTOR(5 DOWNTO 0) := "000000";
+		instReg_s_25to21 : in STD_LOGIC_VECTOR(4 DOWNTO 0) := "00000";
+		instReg_t_16to20: in STD_LOGIC_VECTOR(4 DOWNTO 0) := "00100";
+		instReg_i_0to15 : in STD_LOGIC_VECTOR(15 DOWNTO 0) := "0110000000100000";
 		Clk: in std_logic
 	);
 END ALUOP2;
@@ -20,7 +19,7 @@ signal FUNC : std_logic_vector(5 downto 0);
 signal shamt : std_logic_vector(4 downto 0);
 signal rd : std_logic_vector(4 downto 0);
 signal ALU_OP : std_logic_vector(5 downto 0);
-type state_type is (init,waiting, rLoading1, rLoading2, rExecution ,rWriting, iLoading1, iLoading2, iLoading3, iExecution, iWriting);
+type state_type is (init,waiting, rLoading1, rLoading2, rExecution1, rExecution2 ,rWriting, iLoading1, iLoading2, iLoading3, iExecution, iWriting);
 type action_state_type is (waiting,add,sub,addi,mult,div,slt,slti,aluand,aluor,alunor,aluxor,andi,ori,xori,mfhi,mflo,lui,alusll,alusrl,alusra,lw,lb,sw,sb,beq,bne,j,jr,jal);
 signal state: state_type:=init;
 signal action_state: action_state_type:=waiting;
@@ -40,9 +39,9 @@ signal regSValue : std_logic_vector(register_size downto 0);
 signal regTValue : std_logic_vector(register_size downto 0);
 signal regDValue : std_logic_vector(register_size downto 0);
 
-signal unsignedSValue : unsigned(register_size downto 0);
-signal unsignedTValue : unsigned(register_size downto 0);
-signal unsignedDValue : unsigned(register_size downto 0);
+signal intSValue : integer;
+signal intTValue : integer;
+signal intDValue : integer;
 
 component dataFetch
 PORT(
@@ -58,9 +57,8 @@ END component;
 
 
 BEGIN
-unsignedSValue<=unsigned(regSValue);
-unsignedTValue<=unsigned(regTValue);
-unsignedDValue<=unsigned(regDValue);
+intSValue<=to_integer(unsigned(regSValue));
+intTValue<=to_integer(unsigned(regTValue));
 
 dataFetcher : dataFetch
 PORT MAP(
@@ -197,6 +195,7 @@ regD <= to_integer(unsigned(instReg_i_0to15(15 downto 11)));
 				readOrWrite<='0';
 				fetchNext<='1';
 				if instReady = '1' then
+					fetchNext<='0';
 					regSValue<=output;
 					state <= rLoading2;
 				else
@@ -209,18 +208,20 @@ regD <= to_integer(unsigned(instReg_i_0to15(15 downto 11)));
 				if instReady = '1' then
 					fetchNext<='0';
 					regTValue<=output;
-					state <= rExecution;
+					state <= rExecution1;
 				else
 					state<= rLoading2;
 				end if;
-			when rExecution=>
+			when rExecution1=>
 				case action_state is
 				when add => 
-					unsignedDValue <= unsignedSValue + unsignedTValue;
-					regDValue <= std_logic_vector(unsignedDValue);
-					state<=rWriting;				
+					intDValue <= intSValue + intTValue;
+					state<=rExecution2;				
 				when others =>
 				end case;
+			when rExecution2=>
+				regDValue <= std_logic_vector(to_unsigned(intDValue, 32));
+				state<=rWriting;
 			when rWriting=>
 				dataToWrite<=regDValue;
 				nextAddress<=regD;
