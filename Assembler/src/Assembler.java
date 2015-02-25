@@ -22,7 +22,9 @@ public class Assembler {
     private static HashMap<String, String> registers = new HashMap<String, String>();
     private static HashMap<String, Integer> labels = new HashMap<String, Integer>();
 
-    // Prevent an object of this class from being created
+    /**
+     * Prevent an object of this class from being created
+     */
     private Assembler() {
     }
 
@@ -58,7 +60,10 @@ public class Assembler {
         // Move Instruction
         instructionCodes.put("mflo", "010010");
     }
-
+    
+    /**
+     * Initialize all instructions
+     */
     private static void initInstructions() {
         // R-Type Instructions
         instructions.put("add", instructionR_std);
@@ -157,7 +162,11 @@ public class Assembler {
         void parse(String[] parts);
     }
 
-    // Returns unsigned 5-bit binary representation of decimal value
+    /**
+     * Convert a decimal number to 5-bit binary
+     * @param dec
+     * @return unsigned 5-bit binary representation
+     */
     private static String parseUnsigned5BitBin(int dec) {
         //int decValue = Integer.parseInt(dec); this was used when argument was a string
         String bin = Integer.toBinaryString(dec);
@@ -173,9 +182,9 @@ public class Assembler {
     }
 
     /**
-     *  Returns signed 16-bit binary representation of decimal value
+     * Convert a decimal number to 16-bit binary number
      * @param dec decimal number input
-     * @return binary representation
+     * @return 16-bit binary representation
      */
     private static String parseSigned16BitBin(int dec) {
         //int decValue = Integer.parseInt(dec);
@@ -195,8 +204,11 @@ public class Assembler {
         return bin;
     }
 
-	// Returns unsigned 32-bit binary representation of decimal value
-    // (for use in J-Format instruction)
+    /**
+     * Convert a decimal number to 32-bit binary number
+     * @param dec
+     * @return unsigned 32-bit binary
+     */
     private static String parseUnsigned32BitBin(int dec) {
         String bin = Integer.toBinaryString(dec);
 
@@ -210,7 +222,11 @@ public class Assembler {
         return bin;
     }
 
-    // Returns 8-digit (8-nibble) hexadecimal string representation of decimal value
+    /**
+     * Convert a decimal to a 8-bit hex
+     * @param dec
+     * @return 8-digit hexadecimal string 
+     */
     private static String parse8DigitHex(int dec) {
         String hex = Integer.toHexString(dec);
 
@@ -224,7 +240,11 @@ public class Assembler {
         return hex;
     }
 
-    // Returns the register address as a String
+    /**
+     * Get the address of a given register
+     * @param a register
+     * @return the register address as a String
+     */
     private static String getRegister(String reg) {
         // Numeral address reference, e.g. $8
         if (reg.matches("[$]\\d+")) {
@@ -234,7 +254,9 @@ public class Assembler {
         return registers.get(reg);
     }
 
-    // Instructions: add, sub, and, or, nor, slt
+    /**
+     * Instructions: add, sub, and, or, nor, slt
+     */
     private static instructionParser instructionR_std = new instructionParser() {
         public void parse(String[] parts) {
             String opcode = "000000"; //instrCode.substring(2, 8);
@@ -264,7 +286,9 @@ public class Assembler {
             System.out.println(opcode + rs + rt + rd + shamt + funct);
         }
     };
-    // Instructions: sll, srl
+    /**
+     * Instructions: sll, srl
+     */
     private static instructionParser instructionR_shift = new instructionParser() {
         public void parse(String[] parts) {
             String opcode = "000000";
@@ -278,7 +302,9 @@ public class Assembler {
         }
     };
 
-    // Instructions: jr
+    /**
+     * Instructions: jr
+     */
     private static instructionParser instructionR_jr = new instructionParser() {
         public void parse(String[] parts) {
             String opcode = "000000";
@@ -292,7 +318,9 @@ public class Assembler {
         }
     };
 
-    // Instructions: addi, andi, ori
+    /**
+     * Instructions: jr
+     */
     private static instructionParser instructionI_std = new instructionParser() {
         public void parse(String[] parts) {
             String opcode = instructionCodes.get(parts[0]);
@@ -304,7 +332,9 @@ public class Assembler {
         }
     };
 
-    // Instructions: beq, bne
+    /**
+     * Instructions: beq, bne
+     */
     private static instructionParser instructionI_branch = new instructionParser() {
         public void parse(String[] parts) {
             String opcode = instructionCodes.get(parts[0]);
@@ -316,7 +346,9 @@ public class Assembler {
         }
     };
 
-    // Instructions: lw, sw
+    /**
+     * Instructions: lw, sw
+     */
     private static instructionParser instructionI_word = new instructionParser() {
         public void parse(String[] parts) {
             String opcode = instructionCodes.get(parts[0]);
@@ -328,7 +360,9 @@ public class Assembler {
         }
     };
 
-    // Instructions: j, jal
+    /**
+     * Instructions: j, jal
+     */
     private static instructionParser instructionJ = new instructionParser() {
         public void parse(String[] parts) {
             String opcode = instructionCodes.get(parts[0]);
@@ -340,7 +374,9 @@ public class Assembler {
         }
     };
 
-    // Instruction: mflo
+    /**
+     * Instruction: mflo
+     */
     private static instructionParser instructionR_move = new instructionParser() {
         public void parse(String[] parts){
             String opcode = "000000";
@@ -354,14 +390,19 @@ public class Assembler {
         }
     };
     
-    // Set debug mode, which shows detailed parsing information
+    /**
+     * Set debug mode, which shows detailed parsing information
+     * @param mode 
+     */
     public static void setDebugMode(boolean mode) {
         debugMode = mode;
     }
 
-    // Run assembly process on file with given filename
+    /**
+     * Run assembly process on file with given filename
+     * @param filename 
+     */
     public static void assembleFile(String filename) {
-        // Initialize HashMaps
         initInstructionCodes();
         initInstructions();
         initRegisterCodes();
@@ -372,7 +413,9 @@ public class Assembler {
         assemble();
     }
 
-    // Scan file for labels and add their reference to the labels HashMap
+    /**
+     * Scan file for labels and add their reference to the labels HashMap
+     */
     private static void getLabels() {
         try {
             Scanner scanner = new Scanner(file);
@@ -391,7 +434,7 @@ public class Assembler {
                     }
                 }
 
-				// Remove labels from the line
+                // Remove labels from the line
                 // This is done to check if line is empty & whether or not to increment line number)
                 line = line.replaceAll("^.+:([\\s]+)?", "");
 
@@ -408,7 +451,9 @@ public class Assembler {
         }
     }
 
-    // Perform actual assembly of the instructions into binary
+    /**
+     * Perform actual assembly of the instructions into binary
+     */
     private static void assemble() {
         try {
             Scanner scanner = new Scanner(file);
@@ -417,9 +462,12 @@ public class Assembler {
                 String line = scanner.nextLine();
 
                 line = line.trim(); // Trim leading & trailing white space
+//                line = line.replaceAll("\t", ""); // Remove tabs
+//                line = line.replaceAll(".", "");
                 line = line.replaceAll("^.+:([\\s]+)?", ""); // Remove labels from the line
                 line = line.replaceAll("[#].+", ""); // Remove comments
-                line = line.replace("(", ","); // This line and the following one format to allow for sw & lw instructions
+                
+                line = line.replace("(", ","); // Remove () for sw, and lw instruction
                 line = line.replace(")", "");
 
                 // Do not try to parse line if it is blank or contains only white space/tabs
@@ -455,7 +503,6 @@ public class Assembler {
         }
         catch (FileNotFoundException e) {
             // Do not print anything since parseLabels() already took care of that.
-            // System.out.println("File not found.");
         }
     }
 }

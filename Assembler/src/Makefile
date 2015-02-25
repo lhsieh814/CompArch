@@ -2,15 +2,16 @@ JFLAGS = -g
 JC = javac
 .SUFFIXES: .java .class
 .java.class:
-	$(JC) $(JFLAGS) $*.java
+		$(JC) $(JFLAGS) $*.java
 
-
-CLASSES =\
-		Assembler.java\
-		ReducedMIPS.java
+CLASSES = \
+		ReducedMIPS.java \
+        Assembler.java \
 		
+
 default: classes
 
 classes: $(CLASSES:.java=.class)
 
-clean: $(RM) *.class
+clean:
+		$(RM) *.class

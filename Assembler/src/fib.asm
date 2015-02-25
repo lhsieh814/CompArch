@@ -1,8 +1,4 @@
-###############################################
-# This program generates Fibonacci series.
-# It stores the generated Fibonacci numbers fisrt into, Reg[2] ($2), and then into memory
-# Assume that your data section in memory starts from address 2000
-			
+
 	addi $10,  $0, 4	# number of generating Fibonacci-numbers 
 	addi $1,   $0, 1	# initializing Fib(-1) = 0
 	addi $2,   $0, 1	# initializing Fib(0) = 1
@@ -20,4 +16,5 @@ loop:	addi $3, $2, 0		# temp = Fib(n-1)
 	bne  $10, $0, loop 
 			
 EoP:	beq	 $11, $11, EoP 	#end of program (infinite loop)
+
 ###############################################
