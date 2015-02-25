@@ -9,7 +9,7 @@ Any instruction goes to here.
 
 ####Usage
 
-Step1 : open the the 'src' folder in the terminal
+Step1 : open the the 'Assembler/Assembler/src' folder in the Terminal/Command
 
 Step2 : Use 'make' command to build project
 
