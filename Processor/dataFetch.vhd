@@ -2,6 +2,8 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 use work.MIPSCPU_constants.ALL;
 
+--this entity interacts with the Data memory (DataInit.dat) and dumps written memory contents to (DataMemCon.dat)
+--operates in a similar fashion to instructionFetch.vhd
 ENTITY dataFetch IS
 PORT(
 	clk : in std_logic;
@@ -19,6 +21,7 @@ ARCHITECTURE behavior OF dataFetch IS
 	Constant Num_Bits_in_Byte: integer := 8; 
 	Constant Num_Bytes_in_Word: integer := 4; 
 	Constant Memory_Size: integer := 256; 
+--initialize data memory
 	COMPONENT Main_Memory
 	generic (
 			File_Address_Read : string :="DataInit.dat";
@@ -52,11 +55,9 @@ ARCHITECTURE behavior OF dataFetch IS
    signal initialize : std_logic := '0';
    signal dump : std_logic := '0';
    signal word_byte :std_logic := '1';
-   signal fetchNext_delayed : std_logic := '0';
+   signal fetchNext_delayed : std_logic := '0'; -- used to capture the rising edge of the fetchNext signal
    signal wr_done : std_logic;
    signal rd_ready : std_logic;
-	
-	-- Tests Simulation State 
 	signal state:	state_type:=init;
  
 BEGIN
@@ -101,6 +102,7 @@ BEGIN
 					address <= nextAddress;
 					re<='0';
 					we<='0';
+					--memory continues to wait until a fetchNext call is placed 
 					if fetchNext /= fetchNext_delayed and fetchNext_delayed='0' then
 						if(readOrWrite='0') then
 							state <= read_mem1;

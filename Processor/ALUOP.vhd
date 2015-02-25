@@ -4,26 +4,29 @@ use work.MIPSCPU_constants.ALL;
 use IEEE.numeric_std.all;
 use STD.textio.all;
 
+--This entity takes as input the instruction from the register and manipulates memory accordingly.
 ENTITY ALUOP IS
 	port (	
 		start : in STD_LOGIC := '0';
-		instReg_opc_31to26 : in STD_LOGIC_VECTOR(5 DOWNTO 0) := "000000";
-		instReg_s_25to21 : in STD_LOGIC_VECTOR(4 DOWNTO 0) := "00000";
-		instReg_t_16to20: in STD_LOGIC_VECTOR(4 DOWNTO 0) := "00100";
-		instReg_i_0to15 : in STD_LOGIC_VECTOR(15 DOWNTO 0) := "0110000000100000";
-		aluReady : out STD_Logic := '0';
-		jumpInstruction : out integer := 0;
+		instReg_opc_31to26 : in STD_LOGIC_VECTOR(5 DOWNTO 0); 
+		instReg_s_25to21 : in STD_LOGIC_VECTOR(4 DOWNTO 0);
+		instReg_t_16to20: in STD_LOGIC_VECTOR(4 DOWNTO 0);
+		instReg_i_0to15 : in STD_LOGIC_VECTOR(15 DOWNTO 0);
+		aluReady : out STD_Logic := '0'; --designates that he alu is available
+		jumpInstruction : out integer := 0; --to be used for branching functionality, not yet implemented
 		Clk: in std_logic
 	);
 END ALUOP;
 
 ARCHITECTURE behavior of ALUOP IS
-signal start_del : std_logic :='0';
+signal start_del : std_logic :='0'; --used to capture rising edge of start signal
 signal FUNC : std_logic_vector(5 downto 0);
 signal shamt : std_logic_vector(4 downto 0);
 signal rd : std_logic_vector(4 downto 0);
 signal ALU_OP : std_logic_vector(5 downto 0);
+--initialize states for loading r-type instructions (e.g. rLoading, rExecution, rWriting) and states for immediate instructions (e.g. iLoading, etc.)
 type state_type is (init,waiting, rLoading1, rLoading2, rExecution1, rExecution2, rExecution2b,rWriting, iLoading, iExecution, iExecution2, iExecution2b, iWriting);
+--initialize states for different ALU operations
 type action_state_type is (waiting,add,sub,addi,subi,mult,div,slt,slti,aluand,aluor,alunor,aluxor,andi,ori,xori,mfhi,mflo,lui,alusll,alusrl,alusra,lw,lb,sw,sb,beq,bne,j,jr,jal);
 signal state: state_type:=waiting;
 signal action_state: action_state_type:=waiting;
@@ -75,11 +78,12 @@ PORT MAP(
 	dataToWrite=>dataToWrite,
 	output=>output
 );
-
+ -- organize instruction bits
 FUNC <= instReg_i_0to15(5 downto 0);
 shamt <= instReg_i_0to15(10 downto 6);
 rd <= instReg_i_0to15(15 downto 11);
 ALU_OP <= instReg_opc_31to26;
+-- turn registers numerical addresses and turn immediate instructions into numerical values
 regS <= to_integer(unsigned(instReg_s_25to21));
 regT <= to_integer(unsigned(instReg_t_16to20));
 regD <= to_integer(unsigned(instReg_i_0to15(15 downto 11)));
@@ -90,12 +94,14 @@ regI <= to_integer(unsigned(instReg_i_0to15(15 downto 0)));
 		if RISING_EDGE(Clk) then
 			start_del<=start;
 			case state is
+			--wait idly till start signal is applied
 			when waiting=>
 				aluReady<='1';
 				if (start_del /= start and start_del='0') then
 					state<=init;				
 				end if;
 			when init =>
+			--init decodes instructions into appropriate operations and sets state of ALU accordingly.
 			aluReady<='0';
 			if ALU_OP = "000000" then
 				case FUNC IS
@@ -204,6 +210,8 @@ regI <= to_integer(unsigned(instReg_i_0to15(15 downto 0)));
 				state <= iLoading;
 				action_state <= lui;
 			END if;
+			
+			--"Loading" states load memory into registers
 			when rLoading1=>
 				nextAddress<=regS;
 				readOrWrite<='0';
@@ -226,6 +234,7 @@ regI <= to_integer(unsigned(instReg_i_0to15(15 downto 0)));
 				else
 					state<= rLoading2;
 				end if;
+			--"Execution" states perform correct numerical operations on register values
 			when rExecution1=>
 				case action_state is
 				when add => 
@@ -259,6 +268,7 @@ regI <= to_integer(unsigned(instReg_i_0to15(15 downto 0)));
 				state<=rWriting;
 			when rExecution2b=>
 				state<=rWriting;
+			--"Writing" states write registers back to memory
 			when rWriting=>
 				dataToWrite<=regDValue;
 				nextAddress<=regD;

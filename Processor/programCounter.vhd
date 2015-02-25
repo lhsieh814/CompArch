@@ -7,13 +7,14 @@ entity programCounter is
 port(
 	clk : IN STD_LOGIC;
 	reset : IN STD_LOGIC;
-	writeEnable : IN STD_LOGIC;
-	PCReady : OUT STD_LOGIC := '0';
+	writeEnable : IN STD_LOGIC; -- high signifies writing to pc is enabled
+	PCReady : OUT STD_LOGIC := '0'; --high signifies PC is ready to be updated
 	PCIn : IN integer := 0;
 	PCOut : OUT integer := 0
 );
 end programCounter;
 
+--program counter provides a buffer between next address and the instruction fetcher
 architecture BEHV of programCounter is
 begin
 	process(clk,reset)

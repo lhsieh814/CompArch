@@ -2,14 +2,16 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 use work.MIPSCPU_constants.ALL;
 
+--this entity reads instructions from memory (Init.dat) and outputs instructions partitioned into 4 vectors according to MIPS convention
+--this entity also dumps instruction memory contents to (MemCon.dat)
 ENTITY instructionFetch IS
 PORT(
 	clk : in std_logic;
 	nextAddress : in integer := 0; --address of next instruction register to be read
-	instruction : out std_logic_vector(register_size downto 0); --retrieved instruction
-	instReady : out std_logic := '0'; --1 signifies instruction is ready
-	fetchNext : in std_logic := '0'; --1 signifies to fetch next instruction
-	--instruction register partitions
+	instruction : out std_logic_vector(register_size downto 0); --retrieved unformatted instruction
+	instReady : out std_logic := '0'; --signifies instruction is ready
+	fetchNext : in std_logic := '0'; --next instruction is only fetched when set to high
+	--instruction formatted with register partitions
 	instReg_opc_31to26 : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
 	instReg_s_25to21 : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
 	instReg_t_16to20: OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
@@ -18,6 +20,7 @@ PORT(
 END instructionFetch;
 
 ARCHITECTURE behavior OF instructionFetch IS
+--initialize memory
 	type state_type is (init, read_mem1, read_mem2, waiting);
 	Constant Num_Bits_in_Byte: integer := 8; 
 	Constant Num_Bytes_in_Word: integer := 4; 
@@ -56,9 +59,6 @@ ARCHITECTURE behavior OF instructionFetch IS
    signal dump : std_logic := '0';
    signal wr_done : std_logic;
    signal rd_ready : std_logic;
-	signal fetchNext_delay : std_logic := '0'; --used to catch rising edge of fetchNext
-	
-	-- Tests Simulation State 
 	signal state:	state_type:=init;
  
 BEGIN
@@ -88,7 +88,6 @@ BEGIN
    -- Stimulus process
    stim_proc: process (clk)
    begin
-	fetchNext_delay<=fetchNext;	
       if RISING_EDGE(clk) then
 			data <= (others=>'Z');
 			case state is
@@ -116,11 +115,14 @@ BEGIN
 						re <='0';
 						instReady <='1';
 						state <= waiting; --read finished go to wait state
+						dump <='1';
 					else
 						state <= read_mem2; -- stay in this state till you see rd_ready='1';
 						instReady <='0';
 					end if;
+
 				when waiting =>
+					--wait until a fetch call before getting next memory address
 					if(fetchNext='1') then
 						address <= nextAddress;
 						state <= read_mem1;
