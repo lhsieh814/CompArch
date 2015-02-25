@@ -31,7 +31,19 @@ PORT(
 );
 END component;
 
---testing stuff
+component ALUOP
+	port (
+		jumpInstruction : out integer := 0;
+		start : in STD_LOGIC := '0';
+		instReg_opc_31to26 : in STD_LOGIC_VECTOR(5 DOWNTO 0) := "000000";
+		instReg_s_25to21 : in STD_LOGIC_VECTOR(4 DOWNTO 0) := "00000";
+		instReg_t_16to20: in STD_LOGIC_VECTOR(4 DOWNTO 0) := "00100";
+		instReg_i_0to15 : in STD_LOGIC_VECTOR(15 DOWNTO 0) := "0110000000100000";
+		aluReady : out STD_Logic := '0';
+		Clk: in std_logic
+	);
+END component;
+
 signal clk : std_logic := '0';
 signal instructionReady : std_logic := '0';
 signal nextAddress : integer := 0;
@@ -41,8 +53,11 @@ signal instReg_opc_31to26 : STD_LOGIC_VECTOR(5 DOWNTO 0);
 signal instReg_s_25to21 : STD_LOGIC_VECTOR(4 DOWNTO 0);
 signal instReg_t_16to20: STD_LOGIC_VECTOR(4 DOWNTO 0);
 signal instReg_i_0to15 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal aluReady : std_logic := '0';
+signal aluStart : std_logic := '0';
+signal jumpInstruction : integer;
 signal PCReady : STD_LOGIC;
-
+--clk period for testing
 constant clk_period : time := 100 ns;
 
 begin
@@ -56,10 +71,11 @@ begin
 		wait for clk_period/2;
    end process;
 
-incrementPC : process (instructionReady)
+--process for testing PC
+incrementPC : process (aluReady)
 begin
-if RISING_EDGE(instructionReady) then
-	PCIn <= PCIn +1;
+if RISING_EDGE(aluReady) then
+	PCIn <= PCIn + 4;
 end if;
 end process;
 
@@ -68,11 +84,23 @@ pc : programCounter
 PORT MAP(
 	clk=>clk,
 	reset=>'0',
-	writeEnable=>instructionReady,
+	writeEnable=>aluReady,
 	PCReady=>PCReady,
 	PCIn=>PCIn,
 	PCOut=>nextAddress
 );
+
+alu : ALUOP
+	port MAP(
+		start=>instructionReady,
+		instReg_opc_31to26=>instReg_opc_31to26,
+		instReg_s_25to21=>instReg_s_25to21,
+		instReg_t_16to20=>instReg_t_16to20,
+		instReg_i_0to15=>instReg_i_0to15,
+		aluReady=>aluReady,
+		Clk=>clk
+	);
+
 
 instFetch : instructionFetch
 PORT MAP(
@@ -80,7 +108,7 @@ PORT MAP(
 	nextAddress=>nextAddress,
 	instruction=>instData,
 	instReady=>instructionReady,
-	fetchNext=>PCReady,
+	fetchNext=>aluReady,
 	instReg_opc_31to26=>instReg_opc_31to26,
 	instReg_s_25to21=>instReg_s_25to21,
 	instReg_t_16to20=>instReg_t_16to20,

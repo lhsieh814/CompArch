@@ -5,10 +5,11 @@ use work.MIPSCPU_constants.ALL;
 ENTITY instructionFetch IS
 PORT(
 	clk : in std_logic;
-	nextAddress : in integer;
-	instruction : out std_logic_vector(register_size downto 0);
-	instReady : out std_logic := '0';
-	fetchNext : in std_logic := '0';
+	nextAddress : in integer := 0; --address of next instruction register to be read
+	instruction : out std_logic_vector(register_size downto 0); --retrieved instruction
+	instReady : out std_logic := '0'; --1 signifies instruction is ready
+	fetchNext : in std_logic := '0'; --1 signifies to fetch next instruction
+	--instruction register partitions
 	instReg_opc_31to26 : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
 	instReg_s_25to21 : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
 	instReg_t_16to20: OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
@@ -53,9 +54,9 @@ ARCHITECTURE behavior OF instructionFetch IS
    signal data : std_logic_vector(Num_Bytes_in_Word*Num_Bits_in_Byte-1 downto 0) := (others => 'Z');
    signal initialize : std_logic := '0';
    signal dump : std_logic := '0';
-
    signal wr_done : std_logic;
    signal rd_ready : std_logic;
+	signal fetchNext_delay : std_logic := '0'; --used to catch rising edge of fetchNext
 	
 	-- Tests Simulation State 
 	signal state:	state_type:=init;
@@ -86,7 +87,8 @@ BEGIN
 
    -- Stimulus process
    stim_proc: process (clk)
-   begin		
+   begin
+	fetchNext_delay<=fetchNext;	
       if RISING_EDGE(clk) then
 			data <= (others=>'Z');
 			case state is
@@ -109,16 +111,17 @@ BEGIN
 						instReg_s_25to21 <= data(25 DOWNTO 21);
 						instReg_t_16to20<= data(20 DOWNTO 16);
 						instReg_i_0to15 <= data(15 DOWNTO 0);
+						--move to next address
 						address <= nextAddress;
 						re <='0';
 						instReady <='1';
-						state <= waiting; --read finished go to test state write 
+						state <= waiting; --read finished go to wait state
 					else
 						state <= read_mem2; -- stay in this state till you see rd_ready='1';
 						instReady <='0';
 					end if;
 				when waiting =>
-					if(fetchNext = '1') then
+					if(fetchNext='1') then
 						address <= nextAddress;
 						state <= read_mem1;
 					else state <= waiting;
