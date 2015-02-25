@@ -484,11 +484,11 @@ public class Assembler {
                 line = line.trim(); // Trim leading & trailing white space
                 
                 
-                
+                line = line.replaceAll("[#].+", "");
+
                 line = line.replaceAll("^.+:([\\s]+)?", ""); // Remove labels from the line
                 
 //                line = line.replaceAll("(?m)^[#].+", ""); // Remove comments
-                line = line.replaceAll("[#].+", "");
                 line = line.replace("(", ","); // Remove () for sw, and lw instruction
                 line = line.replace(")", "");
                 
