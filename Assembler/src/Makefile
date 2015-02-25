@@ -6,6 +6,7 @@ JC = javac
 
 CLASSES = \
 		ReducedMIPS.java \
+		TextWriter.java\
         Assembler.java \
 		
 

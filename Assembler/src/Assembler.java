@@ -21,7 +21,8 @@ public class Assembler {
     private static HashMap<String, instructionParser> instructions = new HashMap<String, instructionParser>();
     private static HashMap<String, String> registers = new HashMap<String, String>();
     private static HashMap<String, Integer> labels = new HashMap<String, Integer>();
-
+    
+    public static StringBuffer resultBuffer = new StringBuffer();
     /**
      * Prevent an object of this class from being created
      */
@@ -267,6 +268,8 @@ public class Assembler {
             String funct = instructionCodes.get(parts[0]);
 
             System.out.println(opcode + rs + rt + rd + shamt + funct);
+            
+            resultBuffer.append(opcode + rs + rt + rd + shamt + funct + "\n");
         }
     };
 
@@ -284,6 +287,8 @@ public class Assembler {
             String funct = instructionCodes.get(parts[0]);
             
             System.out.println(opcode + rs + rt + rd + shamt + funct);
+            
+            resultBuffer.append(opcode + rs + rt + rd + shamt + funct + "\n");
         }
     };
     /**
@@ -299,6 +304,8 @@ public class Assembler {
             String funct = instructionCodes.get(parts[0]);
 
             System.out.println(opcode + rs + rt + rd + shamt + funct);
+            
+            resultBuffer.append(opcode + rs + rt + rd + shamt + funct + "\n");
         }
     };
 
@@ -315,6 +322,8 @@ public class Assembler {
             String funct = instructionCodes.get(parts[0]);
 
             System.out.println(opcode + rs + rt + rd + shamt + funct);
+            
+            resultBuffer.append(opcode + rs + rt + rd + shamt +funct + "\n");
         }
     };
 
@@ -329,6 +338,8 @@ public class Assembler {
 //            String immediate = parseSigned16BitBin(Integer.parseInt(parts[3]));
             String immediate = parseSigned16BitBin((int)Float.parseFloat(parts[3]));
             System.out.println(opcode + rs + rt + immediate);
+            
+            resultBuffer.append(opcode + rs + rt +immediate + "\n");
         }
     };
 
@@ -343,6 +354,8 @@ public class Assembler {
             String immediate = parseSigned16BitBin(labels.get(parts[3]) - lineNumber - 1);
 
             System.out.println(opcode + rs + rt + immediate);
+            
+            resultBuffer.append(opcode + rs + rt + immediate + "\n");
         }
     };
 
@@ -357,6 +370,8 @@ public class Assembler {
             String immediate = parseSigned16BitBin(Integer.parseInt(parts[2]));
 
             System.out.println(opcode + rs + rt + immediate);
+            
+            resultBuffer.append(opcode + rs + rt + immediate + "\n");
         }
     };
 
@@ -371,6 +386,8 @@ public class Assembler {
             String address = parseUnsigned32BitBin(fullAddress).substring(4, 30);
 
             System.out.println(opcode + address);
+            
+            resultBuffer.append(opcode + address + "\n");
         }
     };
 
@@ -387,6 +404,8 @@ public class Assembler {
             String funct = instructionCodes.get(parts[0]);
             
             System.out.println(opcode + rs + rt + rd + shamt + funct);
+            
+            resultBuffer.append(opcode + rs + rt + rd + shamt + funct + "\n");
         }
     };
     
@@ -411,6 +430,8 @@ public class Assembler {
 
         getLabels();
         assemble();
+        
+        TextWriter.createTextFile(resultBuffer);
     }
 
     /**
