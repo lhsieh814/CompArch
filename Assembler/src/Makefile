@@ -5,7 +5,7 @@ JC = javac
 		$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
-		ReducedMIPS.java \
+		Main.java \
 		TextWriter.java\
         Assembler.java \
 		
