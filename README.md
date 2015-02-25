@@ -1,4 +1,9 @@
-# CompArch
+# CompArch Deliverable 1
+Group 6:
+Yukun Su (260425096),
+Yang Zhou (260401719),
+Wei Sing Ta (260481021),
+Lena Hsieh (260424941)
 
 ### Processor Part
 
@@ -16,6 +21,8 @@ MIPSCPU.vhd
 The main entity is MIPSCPU.vhd. It uses two separate memory modules: the instruction memory module (Init.dat) and the data memory module (DataInit.dat).
 MIPSCPU can be compiled and run as a simulation in ModelSim whereby it will iterate through each instruction word in Init.dat and perform the associated changes to DataInit.dat.
 Results of the instruction and data memory contents is dumped in MemCon.dat and DataMemCon.dat respectively.
+
+Branching functionality was not successfully added to the CPU.
 
 
 ### Assembler Part
