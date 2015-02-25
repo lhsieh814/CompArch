@@ -2,7 +2,20 @@
 
 ### Processor Part
 
-Any instruction goes to here.
+Add the following vhd files to a ModelSim project (alternatively, open the MIPSCPU.mpf file provided) and compile them in the following order from first to last:
+
+Main_Memory.vhd
+Memory_in_Byte.vhd
+MIPSCPU_constants.vhd
+programCounter.vhd
+ALUOP.vhd
+dataFetch.vhd
+instructionFetch.vhd
+MIPSCPU.vhd
+
+The main entity is MIPSCPU.vhd. It uses two separate memory modules: the instruction memory module (Init.dat) and the data memory module (DataInit.dat).
+MIPSCPU can be compiled and run as a simulation in ModelSim whereby it will iterate through each instruction word in Init.dat and perform the associated changes to DataInit.dat.
+Results of the instruction and data memory contents is dumped in MemCon.dat and DataMemCon.dat respectively.
 
 
 ### Assembler Part

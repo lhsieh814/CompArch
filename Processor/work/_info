@@ -1,0 +1,355 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/James/Desktop/Project2
+Ealuop
+Z1 w1424837343
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx4 work 17 mipscpu_constants 0 22 C>Qb=E6>LR8:S@aIEEW3d1
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z6 8C:/Users/James/Desktop/Project2/ALUOP.vhd
+Z7 FC:/Users/James/Desktop/Project2/ALUOP.vhd
+l0
+L8
+VR;@]A:U_JfY9X^JDK8EcG0
+!s100 H2ol;komhzPZDH3YHF<>Z0
+Z8 OP;C;10.4;61
+32
+Z9 !s110 1424838315
+!i10b 1
+Z10 !s108 1424838315.145000
+Z11 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/James/Desktop/Project2/ALUOP.vhd|
+Z12 !s107 C:/Users/James/Desktop/Project2/ALUOP.vhd|
+!i113 1
+Z13 o-work work -2002 -explicit -O0
+Z14 tExplicit 1
+Abehavior
+R2
+R3
+R4
+R5
+DEx4 work 5 aluop 0 22 R;@]A:U_JfY9X^JDK8EcG0
+l67
+L21
+V?0X91McGIUMVV=Va=PYnd3
+!s100 JDlZMn<KVj?AfN8NC?k1;1
+R8
+32
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14
+Edatafetch
+Z15 w1424837416
+R3
+R4
+R5
+R0
+Z16 8C:/Users/James/Desktop/Project2/dataFetch.vhd
+Z17 FC:/Users/James/Desktop/Project2/dataFetch.vhd
+l0
+L7
+V<8jh4j24RL1D7E@N>FZgA3
+!s100 iASa685L@TB@AR36l9o7l1
+R8
+32
+Z18 !s110 1424838316
+!i10b 1
+Z19 !s108 1424838316.469000
+Z20 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/James/Desktop/Project2/dataFetch.vhd|
+Z21 !s107 C:/Users/James/Desktop/Project2/dataFetch.vhd|
+!i113 1
+R13
+R14
+Abehavior
+R3
+R4
+R5
+DEx4 work 9 datafetch 0 22 <8jh4j24RL1D7E@N>FZgA3
+l63
+L19
+VR@L1enbMBl^ZhL<7?2:dU0
+!s100 JSP[j_gRVzL@MVT5:VH;o1
+R8
+32
+R18
+!i10b 1
+R19
+R20
+R21
+!i113 1
+R13
+R14
+Einstructionfetch
+Z22 w1424836293
+R3
+R4
+R5
+R0
+Z23 8C:/Users/James/Desktop/Project2/instructionFetch.vhd
+Z24 FC:/Users/James/Desktop/Project2/instructionFetch.vhd
+l0
+L7
+V^Z;faQHd?m23aG1>WcjZ@3
+!s100 8zkmFAzHjdcGEYG9:[W]H2
+R8
+32
+Z25 !s110 1424838317
+!i10b 1
+Z26 !s108 1424838317.768000
+Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/James/Desktop/Project2/instructionFetch.vhd|
+Z28 !s107 C:/Users/James/Desktop/Project2/instructionFetch.vhd|
+!i113 1
+R13
+R14
+Abehavior
+R3
+R4
+R5
+DEx4 work 16 instructionfetch 0 22 ^Z;faQHd?m23aG1>WcjZ@3
+l64
+L22
+VPEz[k:LQeNXMjVOAR;3gj2
+!s100 0DfLOL;S1Wo>JX@BlSnoo0
+R8
+32
+R25
+!i10b 1
+R26
+R27
+R28
+!i113 1
+R13
+R14
+Emain_memory
+Z29 w1424773113
+R4
+R5
+R0
+Z30 8C:/Users/James/Desktop/Project2/Main_Memory.vhd
+Z31 FC:/Users/James/Desktop/Project2/Main_Memory.vhd
+l0
+L5
+V_dUOTIBd09SUa6Gl65b<n2
+!s100 A_CV;KMiU4ED`M9hgXdHI3
+R8
+32
+Z32 !s110 1424838310
+!i10b 1
+Z33 !s108 1424838310.797000
+Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/James/Desktop/Project2/Main_Memory.vhd|
+Z35 !s107 C:/Users/James/Desktop/Project2/Main_Memory.vhd|
+!i113 1
+R13
+R14
+Abehavioural
+R4
+R5
+DEx4 work 11 main_memory 0 22 _dUOTIBd09SUa6Gl65b<n2
+l65
+L29
+Vo8k=_mJIM;jPlliFN20cA3
+!s100 ?Y`g6Hi4?WMZ^X;QHS:5X2
+R8
+32
+R32
+!i10b 1
+R33
+R34
+R35
+!i113 1
+R13
+R14
+Ememory_in_byte
+R29
+R4
+R5
+R0
+Z36 8C:/Users/James/Desktop/Project2/Memory_in_Byte.vhd
+Z37 FC:/Users/James/Desktop/Project2/Memory_in_Byte.vhd
+l0
+L5
+VBO0fhm>?dm>SN]YfFaK<?0
+!s100 jXbBLDeI>Jz91`Od40R<@2
+R8
+32
+Z38 !s110 1424838312
+!i10b 1
+Z39 !s108 1424838312.109000
+Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/James/Desktop/Project2/Memory_in_Byte.vhd|
+Z41 !s107 C:/Users/James/Desktop/Project2/Memory_in_Byte.vhd|
+!i113 1
+R13
+R14
+Abehavioural
+R4
+R5
+DEx4 work 14 memory_in_byte 0 22 BO0fhm>?dm>SN]YfFaK<?0
+l33
+L29
+V_7]HYW>[?KI@AAQPRAzT=2
+!s100 ?=W8<E9ohHIkAALbC@^2z1
+R8
+32
+R38
+!i10b 1
+R39
+R40
+R41
+!i113 1
+R13
+R14
+Emipscpu
+Z42 w1424834309
+R3
+R4
+R5
+R0
+Z43 8C:/Users/James/Desktop/Project2/MIPSCPU.vhd
+Z44 FC:/Users/James/Desktop/Project2/MIPSCPU.vhd
+l0
+L5
+VM6dOOMA3K^J@?j@YN;RWk2
+!s100 z1B8nLP;:CfKVjZ4>=H:e3
+R8
+32
+Z45 !s110 1424838319
+!i10b 1
+Z46 !s108 1424838319.077000
+Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/James/Desktop/Project2/MIPSCPU.vhd|
+Z48 !s107 C:/Users/James/Desktop/Project2/MIPSCPU.vhd|
+!i113 1
+R13
+R14
+Abehavior
+R3
+R4
+R5
+DEx4 work 7 mipscpu 0 22 M6dOOMA3K^J@?j@YN;RWk2
+l63
+L8
+VFJUh`<m7>d<U7YAjE@HIL3
+!s100 GdnEWG_lo2P<`ICVCW^oJ1
+R8
+32
+R45
+!i10b 1
+R46
+R47
+R48
+!i113 1
+R13
+R14
+Pmipscpu_constants
+w1424754907
+R0
+8C:/Users/James/Desktop/Project2/MIPSCPU_constants.vhd
+FC:/Users/James/Desktop/Project2/MIPSCPU_constants.vhd
+l0
+L1
+VC>Qb=E6>LR8:S@aIEEW3d1
+!s100 mJGh92T:K1=W=emWDllY00
+R8
+32
+Z49 !s110 1424838313
+!i10b 1
+!s108 1424838313.622000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/James/Desktop/Project2/MIPSCPU_constants.vhd|
+!s107 C:/Users/James/Desktop/Project2/MIPSCPU_constants.vhd|
+!i113 1
+R13
+R14
+Eprogramcounter
+Z50 w1424836245
+R2
+R3
+R4
+R5
+R0
+Z51 8C:/Users/James/Desktop/Project2/programCounter.vhd
+Z52 FC:/Users/James/Desktop/Project2/programCounter.vhd
+l0
+L6
+VEcDlU3JC]VKahk>_m5e9I1
+!s100 F]1i7MfMQ1FFFzzhdZg2P0
+R8
+32
+R49
+!i10b 1
+Z53 !s108 1424838313.835000
+Z54 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/James/Desktop/Project2/programCounter.vhd|
+Z55 !s107 C:/Users/James/Desktop/Project2/programCounter.vhd|
+!i113 1
+R13
+R14
+Abehv
+R2
+R3
+R4
+R5
+DEx4 work 14 programcounter 0 22 EcDlU3JC]VKahk>_m5e9I1
+l19
+L18
+V>8H4LhDWiO7YeL=22bzFo1
+!s100 Gfc7mZk9z]Ae]R86Q]A9J3
+R8
+32
+R49
+!i10b 1
+R53
+R54
+R55
+!i113 1
+R13
+R14
+Etb_main_memory
+R29
+R4
+R5
+R0
+Z56 8C:/Users/James/Desktop/Project2/tb_Main_Memory.vhd
+Z57 FC:/Users/James/Desktop/Project2/tb_Main_Memory.vhd
+l0
+L6
+V_Uzjo[2Pl;jCYlfCg<QIC2
+!s100 f`AoabXbZgAc[hc>F`^lk0
+R8
+32
+!s110 1424838308
+!i10b 1
+Z58 !s108 1424838308.942000
+Z59 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/James/Desktop/Project2/tb_Main_Memory.vhd|
+Z60 !s107 C:/Users/James/Desktop/Project2/tb_Main_Memory.vhd|
+!i113 1
+R13
+R14
+Abehavior
+R4
+R5
+DEx4 work 14 tb_main_memory 0 22 _Uzjo[2Pl;jCYlfCg<QIC2
+l67
+L9
+VW]AO2F8Y?5OP7k7zEYmiS1
+!s100 YiO4VICS?4G6PaH[UMdQ:0
+R8
+32
+!s110 1424838309
+!i10b 1
+R58
+R59
+R60
+!i113 1
+R13
+R14
