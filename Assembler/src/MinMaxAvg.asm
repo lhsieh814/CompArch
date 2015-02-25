@@ -1,10 +1,3 @@
-#             Min/Max/Average
-#
-# This routine computes the min/max and average of
-# a variable length array.
-#
-
-#Array:		.word	34, 78, 43, 67, 91, 56, 25, 69
 
 	addi $11,  $0, 2000  	# initializing the beginning of Data Section address in memory
 	addi $15, $0, 4 		# word size in byte
@@ -73,9 +66,7 @@ Main:	add	$1, $0, $11	# init starting ptr
 		jal	MinMaxAvg	# call routine
 		jr	$10		# return to os
 
-# inputs: $1= array ptr, $2= array length, $31 return address
-# outputs: $3= min, $4= max, $5= avg
-# working: $6= end ptr, $7= current element, $8= predicate
+
 
 MinMaxAvg:	lw	$3, 0($1)	# load init min
 		lw	$4, 0($1)	# load init max

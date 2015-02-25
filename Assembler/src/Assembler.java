@@ -1,15 +1,14 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.HashMap;
+
 /**
  * ECSE 415 Project, Assembler Implementation
  * Author: Yang Zhou
  * Group 6
  * Members: Yukun Su, Yang Zhou, Wei Sing Ta, Lena Hsieh
  */
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.util.HashMap;
-
 public class Assembler {
 
     private static File file;
@@ -455,8 +454,7 @@ public class Assembler {
                     }
                 }
 
-                // Remove labels from the line
-                // This is done to check if line is empty & whether or not to increment line number)
+                // Remove empty lines
                 line = line.replaceAll("^.+:([\\s]+)?", "");
 
                 if (!line.isEmpty()) {
@@ -482,14 +480,19 @@ public class Assembler {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
 
-                line = line.trim(); // Trim leading & trailing white space
-//                line = line.replaceAll("\t", ""); // Remove tabs
-//                line = line.replaceAll(".", "");
-                line = line.replaceAll("^.+:([\\s]+)?", ""); // Remove labels from the line
-                line = line.replaceAll("[#].+", ""); // Remove comments
                 
+                line = line.trim(); // Trim leading & trailing white space
+                
+                
+                
+                line = line.replaceAll("^.+:([\\s]+)?", ""); // Remove labels from the line
+                
+//                line = line.replaceAll("(?m)^[#].+", ""); // Remove comments
+                line = line.replaceAll("[#].+", "");
                 line = line.replace("(", ","); // Remove () for sw, and lw instruction
                 line = line.replace(")", "");
+                
+                System.out.print(line);
 
                 // Do not try to parse line if it is blank or contains only white space/tabs
                 if (line.isEmpty()) {

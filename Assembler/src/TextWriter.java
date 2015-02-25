@@ -1,19 +1,14 @@
-
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.channels.Channels;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author Gavin
+ * ECSE 415 Project, Assembler Implementation
+ * Author: Yang Zhou
+ * Group 6
+ * Members: Yukun Su, Yang Zhou, Wei Sing Ta, Lena Hsieh
  */
 public class TextWriter {
     public static Writer writer = null;
