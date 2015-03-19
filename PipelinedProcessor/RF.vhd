@@ -54,4 +54,4 @@ Architecture RTL of RF is
 			end if;
 		end if;
 		end process;
-end RTL;
+end RTL;	
