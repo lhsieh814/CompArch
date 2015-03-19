@@ -1,10 +1,11 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use work.MIPSCPU_constants.all;
 
 Entity SignExtension is
 	Port(
 		A	: in std_logic_vector(15 downto 0);
-		Y	: out std_logic_vector(31 downto 0)
+		Y	: out std_logic_vector(register_size downto 0)
 	);
 	End;
 

@@ -1,6 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.MIPSCPU_constants.all;
 
 entity RegisterFile is
 port(
@@ -11,9 +12,9 @@ port(
     rt: in STD_LOGIC_VECTOR(4 downto 0);
     rd: in STD_LOGIC_VECTOR(4 downto 0);
     regWrite: in STD_LOGIC;
-    writeData: in STD_LOGIC_VECTOR(31 downto 0);
-    outA: out STD_LOGIC_VECTOR(31 downto 0);
-    outB: out STD_LOGIC_VECTOR(31 downto 0)
+    writeData: in STD_LOGIC_VECTOR(register_size downto 0);
+    outA: out STD_LOGIC_VECTOR(register_size downto 0);
+    outB: out STD_LOGIC_VECTOR(register_size downto 0)
 );
 end RegisterFile;
 

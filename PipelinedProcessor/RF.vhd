@@ -1,26 +1,26 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.MIPSCPU_constants.all;
 
 -- implementation of register file
 
 Entity RF is
-	Generic(W : natural := 32);
 	port(
-		A1		: in std_logic_vector(4 downto 0);
-		A2		: in std_logic_vector(4 downto 0);
+		A1	: in std_logic_vector(4 downto 0);
+		A2	: in std_logic_vector(4 downto 0);
 		A3 	: in std_logic_vector(4 downto 0);
-		WD3	: in std_logic_vector(W-1 downto 0);
+		WD3	: in std_logic_vector(register_size downto 0);
 		clk	: in std_logic;
 		We3	: in std_logic;
-		RD1 	: out std_logic_vector(W-1 downto 0);
-		RD2	: out std_logic_vector(W-1 downto 0)
+		RD1 : out std_logic_vector(register_size downto 0);
+		RD2	: out std_logic_vector(register_size downto 0)
 	);
 	End RF;
 	
 Architecture RTL of RF is
 
-	type ffd_vector is array (31 downto 0) of std_logic_vector(31 downto 0);
+	type ffd_vector is array (register_size downto 0) of std_logic_vector(register_size downto 0);
 	signal ffd : ffd_vector;
 	
 	begin
