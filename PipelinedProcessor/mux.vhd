@@ -1,13 +1,14 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use work.MIPSCPU_constants.all;
 
 -- Implementation of multiplexer
 Entity mux is 
 	Generic(W : integer);
 	Port(
-		D0, D1	: in std_logic_vector(W-1 downto 0); -- two inputs
+		D0, D1	: in std_logic_vector(register_size downto 0); -- two inputs
 		S			: in std_logic;	-- seletion line
-		Y 			: out std_logic_vector(W-1 downto 0)
+		Y 			: out std_logic_vector(register_size downto 0)
 	);
 	End;
 
