@@ -33,7 +33,7 @@ begin
             memToRegM  <= memToRegE;
             memWriteM  <= memWriteE;
             aluOut     <= aluIn;
-            writeDataM <= writeDataE
+            writeDataM <= writeDataE;
             writeRegM  <= writeRegE;
         end if;
     end process; 

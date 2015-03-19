@@ -12,11 +12,11 @@ Entity REG_MEMWB is
       aluOutM     : in std_logic_vector(register_size downto 0);
       writeRegM   : in std_logic_vector(4 downto 0);
 
-      regWriteW   : in std_logic;
-      memToRegW   : in std_logic;
-      readDataW   : in std_logic_vector(register_size downto 0);
-      aluOutW     : in std_logic_vector(register_size downto 0);
-      writeRegW   : in std_logic_vector(4 downto 0)
+      regWriteW   : out std_logic;
+      memToRegW   : out std_logic;
+      readDataW   : out std_logic_vector(register_size downto 0);
+      aluOutW     : out std_logic_vector(register_size downto 0);
+      writeRegW   : out std_logic_vector(4 downto 0)
       );
   end REG_MEMWB;
 
