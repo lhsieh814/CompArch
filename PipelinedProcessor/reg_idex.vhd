@@ -1,6 +1,7 @@
 library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+use ieee.std_logic_1164.ALL;
+use ieee.numeric_std.ALL;
+use work.MIPSCPU_constants.ALL;
 
 entity reg_idex is
     port(
@@ -12,8 +13,8 @@ entity reg_idex is
         aluControlD : in STD_LOGIC_VECTOR(2 downto 0);
         aluSrcD : in STD_LOGIC;
         regDstD : in STD_LOGIC;
-        rd1 : in STD_LOGIC_VECTOR(31 downto 0);
-        rd2 : in STD_LOGIC_VECTOR(31 downto 0);
+        rd1 : in STD_LOGIC_VECTOR(register_size downto 0);
+        rd2 : in STD_LOGIC_VECTOR(register_size downto 0);
         rsD : in STD_LOGIC_VECTOR(4 downto 0);
         rtD : in STD_LOGIC_VECTOR(4 downto 0);
         rdD : in STD_LOGIC_VECTOR(4 downto 0);
