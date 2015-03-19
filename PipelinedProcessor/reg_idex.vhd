@@ -35,7 +35,7 @@ end reg_idex;
 
 architecture behavior of reg_idex is
 begin
-    process(clk, reset, rsE, rtE, rdE, regWriteE, memToRegE, memWriteE)
+    process(clk, reset, rsD, rtD, rdD, regWriteD, memToRegD, memWriteD)
     begin
         if reset='1' then
             rsE <= (others => '0');
