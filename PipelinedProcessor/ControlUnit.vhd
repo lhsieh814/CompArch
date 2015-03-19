@@ -3,11 +3,15 @@ entity ControlUnit is
 port(
 	op: in STD_LOGIC_VECTOR(5 downto 0);
 	funct: in STD_LOGIC_VECTOR(5 downto 0);
-	memtoreg, memwrite: out STD_LOGIC;
-	branch, alusrc: out STD_LOGIC;
-	regdst, regwrite: out STD_LOGIC;
-	jump: out STD_LOGIC;
-	alucontrol: out STD_LOGIC_VECTOR(3 downto 0));
+	regwrite: out STD_LOGIC; 
+	memtoreg: out STD_LOGIC;
+	memwrite: out STD_LOGIC;
+	alucontrol: out STD_LOGIC_VECTOR(3 downto 0);
+	alusrc: out STD_LOGIC;
+	regdst: out STD_LOGIC;
+	branch: out STD_LOGIC;
+	jump: out STD_LOGIC
+);
 end;
 
 architecture behavior of ControlUnit is
