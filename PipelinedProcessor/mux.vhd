@@ -7,7 +7,7 @@ Entity mux is
 	Port(
 		D0, D1	: in std_logic_vector(W-1 downto 0); -- two inputs
 		S			: in std_logic;	-- seletion line
-		Y 			: out std_logic_vector(W-1 downto 0);
+		Y 			: out std_logic_vector(W-1 downto 0)
 	);
 	End;
 
