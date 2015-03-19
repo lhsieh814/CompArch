@@ -35,7 +35,7 @@ end reg_idex;
 
 architecture behavior of reg_idex is
 begin
-    process(clk, reset, rsD, rtD, rdD, regWriteD, memToRegD, memWriteD)
+    process(clk, reset)
     begin
         if reset='1' then
             rsE <= (others => '0');
@@ -44,6 +44,9 @@ begin
             regWriteE <= '0';
             memToRegE <= '0';
             memWriteE <= '0';
+            aluControlE <= (others => '0');
+            aluSrcE <= '0';
+            regDstE <= '0';
         elsif RISING_EDGE(clk) then
             rsE <= rsD;
             rtE <= rtD;
@@ -51,6 +54,9 @@ begin
             regWriteE <= regWriteD;
             memToRegE <= memToRegD;
             memWriteE <= memWriteD;
+            aluControlE <= aluControlD;
+            aluSrcE <= aluSrcD;
+            regDstE <= regDstD;
         end if;
     end process;
 end behavior;
