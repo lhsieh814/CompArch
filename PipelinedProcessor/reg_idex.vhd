@@ -10,34 +10,37 @@ entity reg_idex is
         regWriteD : in STD_LOGIC;
         memToRegD : in STD_LOGIC;
         memWriteD : in STD_LOGIC;
-        aluControlD : in STD_LOGIC_VECTOR(2 downto 0);
+        aluControlD : in STD_LOGIC_VECTOR(3 downto 0);
         aluSrcD : in STD_LOGIC;
         regDstD : in STD_LOGIC;
-        rd1 : in STD_LOGIC_VECTOR(register_size downto 0);
-        rd2 : in STD_LOGIC_VECTOR(register_size downto 0);
+        rd1D : in STD_LOGIC_VECTOR(register_size downto 0);
+        rd2D : in STD_LOGIC_VECTOR(register_size downto 0);
         rsD : in STD_LOGIC_VECTOR(4 downto 0);
         rtD : in STD_LOGIC_VECTOR(4 downto 0);
         rdD : in STD_LOGIC_VECTOR(4 downto 0);
-        signImmD : in STD_LOGIC_VECTOR(15 downto 0);
+        signImmD : in STD_LOGIC_VECTOR(register_size downto 0);
 
         regWriteE : out STD_LOGIC;
         memToRegE : out STD_LOGIC;
         memWriteE : out STD_LOGIC;
-        aluControlE : out STD_LOGIC_VECTOR(2 downto 0);
+        aluControlE : out STD_LOGIC_VECTOR(3 downto 0);
         aluSrcE : out STD_LOGIC;
         regDstE : out STD_LOGIC;
+ 	rd1e : out STD_LOGIC_VECTOR(register_size downto 0);
+        rd2e : out STD_LOGIC_VECTOR(register_size downto 0);
         rsE : out STD_LOGIC_VECTOR(4 downto 0);
         rtE : out STD_LOGIC_VECTOR(4 downto 0);
         rdE : out STD_LOGIC_VECTOR(4 downto 0);
-        signImmE : out STD_LOGIC_VECTOR(15 downto 0)
+        signImmE : out STD_LOGIC_VECTOR(register_size downto 0);
+	FlushE : in std_logic
     );
 end reg_idex;
 
 architecture behavior of reg_idex is
 begin
-    process(clk, reset)
+    process(clk, FlushE)
     begin
-        if reset='1' then
+        if FlushE='1' then
             rsE <= (others => '0');
             rtE <= (others => '0');
             rdE <= (others => '0');
@@ -47,7 +50,7 @@ begin
             aluControlE <= (others => '0');
             aluSrcE <= '0';
             regDstE <= '0';
-        elsif RISING_EDGE(clk) then
+        elsif RISING_EDGE(clk)then
             rsE <= rsD;
             rtE <= rtD;
             rdE <= rdD;

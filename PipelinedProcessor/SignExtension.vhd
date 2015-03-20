@@ -7,7 +7,7 @@ Entity SignExtension is
 		A	: in std_logic_vector(15 downto 0);
 		Y	: out std_logic_vector(register_size downto 0)
 	);
-	End;
+	End signextension;
 
 Architecture behave of SignExtension is 
 	begin

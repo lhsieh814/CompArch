@@ -1,12 +1,12 @@
-library ieee;
-use ieee.std_logic_vector.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
 use work.MIPSCPU_constants.all;
 
 Entity Comparator is 
 	
 	Port (
 		a, b 	: in std_logic_vector(register_size downto 0); -- inputs of two vectors
-		output	: out std_logic;
+		output	: out std_logic
 	);
 End;
 

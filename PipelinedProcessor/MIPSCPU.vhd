@@ -6,6 +6,44 @@ ENTITY MIPSCPU IS
 END MIPSCPU;
 
 ARCHITECTURE behavior OF MIPSCPU IS
+    function To_Std_Logic(L: BOOLEAN) return std_logic is
+    begin
+        if L then
+        return('1');
+        else
+        return('0');
+        end if;
+    end function To_Std_Logic;
+
+component REG_EXMEM is 
+    port(
+        clk        :   in STD_LOGIC;                    
+
+        regWriteE  :   in STD_LOGIC;   
+        memToRegE  :   in STD_LOGIC;                 
+        memWriteE  :   in STD_LOGIC;                
+        aluIn      :   in STD_LOGIC_VECTOR (register_size downto 0);                  
+        writeDataE :   in STD_LOGIC_VECTOR (register_size downto 0); 
+        writeRegE  :   in STD_LOGIC_VECTOR (4 downto 0); 
+ 
+        regWriteM  :   out STD_LOGIC;   
+        memToRegM  :   out STD_LOGIC;                 
+        memWriteM  :   out STD_LOGIC;                
+        aluOut     :   out STD_LOGIC_VECTOR (register_size downto 0);                  
+        writeDataM :   out STD_LOGIC_VECTOR (register_size downto 0); 
+        writeRegM  :   out STD_LOGIC_VECTOR (4 downto 0)
+ 
+        );
+end component;
+
+component mux is 
+	Port(
+		D0, D1	: in std_logic_vector(register_size downto 0); -- two inputs
+		S			: in std_logic;	-- seletion line
+		Y 			: out std_logic_vector(register_size downto 0)
+	);
+	End component;
+
 component DataMemory IS
 PORT(
 	clk : in std_logic;
@@ -17,6 +55,54 @@ PORT(
 	output : OUT STD_LOGIC_VECTOR(register_size DOWNTO 0)
 );
 END component;
+
+component Mux_3 is
+	port (ZERO: in std_logic_vector(31 downto 0);
+		  ONE: in std_logic_vector(31 downto 0);
+		  TWO: in std_logic_vector(31 downto 0);
+		  CTRL: in std_logic_vector(1 downto 0);
+		  OUTPUT: out std_logic_vector(31 downto 0));
+end component;
+
+component reg_idex is
+    port(
+        clk : in STD_LOGIC;
+        reset : in STD_LOGIC;
+        regWriteD : in STD_LOGIC;
+        memToRegD : in STD_LOGIC;
+        memWriteD : in STD_LOGIC;
+        aluControlD : in STD_LOGIC_VECTOR(3 downto 0);
+        aluSrcD : in STD_LOGIC;
+        regDstD : in STD_LOGIC;
+        rd1d : in STD_LOGIC_VECTOR(register_size downto 0);
+        rd2d : in STD_LOGIC_VECTOR(register_size downto 0);
+        rsD : in STD_LOGIC_VECTOR(4 downto 0);
+        rtD : in STD_LOGIC_VECTOR(4 downto 0);
+        rdD : in STD_LOGIC_VECTOR(4 downto 0);
+        signImmD : in STD_LOGIC_VECTOR(register_size downto 0);
+
+ 	rd1e : out STD_LOGIC_VECTOR(register_size downto 0);
+        rd2e : out STD_LOGIC_VECTOR(register_size downto 0);
+        regWriteE : out STD_LOGIC;
+        memToRegE : out STD_LOGIC;
+        memWriteE : out STD_LOGIC;
+        aluControlE : out STD_LOGIC_VECTOR(3 downto 0);
+        aluSrcE : out STD_LOGIC;
+        regDstE : out STD_LOGIC;
+        rsE : out STD_LOGIC_VECTOR(4 downto 0);
+        rtE : out STD_LOGIC_VECTOR(4 downto 0);
+        rdE : out STD_LOGIC_VECTOR(4 downto 0);
+        signImmE : out STD_LOGIC_VECTOR(register_size downto 0);
+	FlushE : in std_logic
+    );
+end component;
+
+component SignExtension is
+	Port(
+		A	: in std_logic_vector(15 downto 0);
+		Y	: out std_logic_vector(register_size downto 0)
+	);
+	End component;
 
 component RF is
 	port(
@@ -130,7 +216,6 @@ component Reg_IFID is
 		signal PCPlus4f : integer;
 		signal PCplus4d : integer;
 		signal PCReady : STD_LOGIC;
-		signal PCSrcD : std_logic := '0';
 
 	signal StallF : std_logic;
         signal StallD  : std_logic;
@@ -139,10 +224,11 @@ component Reg_IFID is
         signal ForwardBD : std_logic;
         signal rsD : std_logic_vector(4 downto 0);
         signal rtD : std_logic_vector(4 downto 0);
+	signal rdD : std_logic_vector(4 downto 0);
         signal FlushE :  std_logic;
         signal rsE : std_logic_vector(4 downto 0);
         signal rtE : std_logic_vector(4 downto 0);
-        
+        signal rdE : std_logic_vector(4 downto 0);
         signal ForwardAE : std_logic_vector(1 downto 0);
         signal ForwardBE : std_logic_vector(1 downto 0);
         signal WriteRegE : std_logic_vector(4 downto 0);
@@ -152,7 +238,8 @@ component Reg_IFID is
         signal WriteRegM : std_logic_vector(4 downto 0);
         signal MemToRegM : std_logic;
         signal RegWriteM : std_logic;
-        
+	signal memWriteM : std_logic;
+	signal writeDataM : std_logic_vector(register_size downto 0);  
         signal WriteRegW : std_logic_vector(4 downto 0);
         signal RegWriteW : std_logic;
 
@@ -162,7 +249,8 @@ component Reg_IFID is
 		signal readOrWrite : std_logic;
 		signal dataToWrite : std_logic_vector(register_size downto 0);
 		signal memoryOutput : std_logic_vector(register_size downto 0);
-
+		
+		signal PCSrcD: STD_LOGIC; 
 		signal regwriteD: STD_LOGIC; 
 		signal memtoregD: STD_LOGIC;
 		signal memwriteD:  STD_LOGIC;
@@ -170,23 +258,68 @@ component Reg_IFID is
 		signal alusrcD:  STD_LOGIC;
 		signal regdstD:  STD_LOGIC;
 		signal jumpD:  STD_LOGIC;
+		signal SignImmD : std_logic_vector(register_size downto 0);
+		signal RD1d : std_logic_vector(register_size downto 0);
+		signal RD2d : std_logic_vector(register_size downto 0);
+		signal EqualD : std_logic;
+		signal MuxAOut : std_logic_vector(register_size downto 0);
+		signal MuxBOut : std_logic_vector(register_size downto 0);
 		
-		signal RD1 : std_logic_vector(register_size downto 0);
-		signal RD2 : std_logic_vector(register_size downto 0);
+		signal MemWriteE :std_logic;	
+		signal aluControlE:std_logic_vector(3 downto 0);
+		signal aluSrcE: std_logic;
+		signal regDstE :std_logic;
+		signal signImmE :std_logic_vector(register_size downto 0);
+		signal SrcAE : STD_LOGIC_VECTOR(register_size downto 0);
+		signal SrcBE : STD_LOGIC_VECTOR(register_size downto 0);
+		signal WriteDataE : STD_LOGIC_VECTOR(register_size downto 0);
+		signal RD1e : std_logic_vector(register_size downto 0);
+		signal RD2e : std_logic_vector(register_size downto 0);
+		signal ALUOutE : std_logic_vector(register_size downto 0);
+		signal ALUOutM : STD_LOGIC_VECTOR(register_size downto 0);
 		signal resultW : STD_LOGIC_vector(register_size downto 0);
-
 begin
 PCPlus4f<=PCF+4;
+rsD<=instrD(25 downto 21);
+rtD<=instrD(20 downto 16);
+rdD<=instrD(15 downto 11);
+rsD<=instrD(25 downto 21);
+EqualD<=to_std_logic(MuxAOut=MuxBOut);
+PCSrcD<=(BranchD AND EqualD);
 
---PCSrcD_MUX: process(PCSrcD,PCPlus4F,PCBranchD)
---		begin
---			if( PCSrcD = '0') then
---				PCPrime <= PCPlus4F; 
---			else
---				PCPrime <= PCBranchD;
---			end if;
---		end process PCSrcD_MUX; 
+--PCSrcD_Mux : Mux
+--	Port map(
+--		D0=>PCPlus4F,
+--		D1=>AluOutM,		
+--		S=>PCSrcD,
+--		Y=>PCPrime
+--	);
 
+
+
+muxA : Mux
+	Port map(
+		D0=>Rd1d,
+		D1=>AluOutM,		
+		S=>ForwardAD,
+		Y=>MuxAOut
+	);
+
+muxB : Mux
+	Port map(
+		D0=>Rd2d,
+		D1=>AluOutM,		
+		S=>ForwardBD,
+		Y=>MuxBOut
+	);
+
+muxSrcBE : Mux
+	Port map(
+		D0=>WriteDataE,
+		D1=>SignImmE,		
+		S=>AluSRCE,
+		Y=>SrcBE
+	);
 
 registerFile : RF
 	port map(
@@ -196,10 +329,15 @@ registerFile : RF
 		WD3=>ResultW,
 		clk=>clk,
 		We3=>RegWriteW,
-		RD1=>RD1,
-		RD2=>RD2
+		RD1=>rd1d,
+		RD2=>RD2d
 	);
 
+signExtend : SignExtension
+	Port map(
+		A=>Instrd(15 downto 0),
+		Y=>SignImmD
+	);
 
 PC : programCounter
 PORT MAP(
@@ -243,6 +381,23 @@ PORT MAP(
 	output=>memoryOutput
 );
 
+mux3A : Mux_3
+	port map(ZERO=>rd1e,
+		  ONE=>resultW,
+		  TWO=>ALUOutM,
+		  CTRL=>ForwardAE,
+		  OUTPUT=>SrcAE);
+
+mux3B : Mux_3
+	port map(ZERO=>RD2e,
+		  ONE=>resultW,
+		  TWO=>ALUOutM,
+		  CTRL=>ForwardBE,
+		  OUTPUT=>WriteDataE);
+
+
+
+
 controlU : ControlUnit 
 port map(
 	op=>instrD(31 downto 26),
@@ -256,6 +411,65 @@ port map(
 	branch=>branchd,
 	jump=>jumpd
 );
+
+exmem :reg_exmem
+    port map(
+        clk=>clk,             
+
+        regWriteE=>regWriteE,   
+        memToRegE=>memToRegE,              
+        memWriteE =>memWriteE,
+        aluIn=>aluOutE,
+        writeDataE=>writeDataE,
+        writeRegE=>WriteRegE,
+        regWriteM => regWriteM,  
+        memToRegM=>memToRegM,              
+        memWriteM=>memWriteM,              
+        aluOut=>aluoutm,                  
+        writeDataM=>writeDataM,
+        writeRegM =>writeRegM
+ 
+        );
+
+idex : reg_idex
+    port map(
+        clk=>clk,
+        reset=>'0',
+        regWriteD=>regWriteD,
+        memToRegD=>memToRegD,
+        memWriteD=>memWriteD,
+        aluControlD=>aluControlD,
+        aluSrcD=>aluSrcD,
+        regDstD=>regDstD,
+        rd1d=>rd1d,
+        rd2d=>rd2d,
+        rsD=>rsd,
+        rtD=>rtd,
+        rdD=>rdd,
+        signImmD=>signImmD,
+
+	rd1e=>rd1e,
+        rd2e=>rd2e,
+        regWriteE=>regwriteE,
+        memToRegE=>MemToRegE,
+        memWriteE=>memWriteE,
+        aluControlE=>aluControlE,
+        aluSrcE=>aluSrcE,
+        regDstE=>regDstE,
+        rsE=>rsE,
+        rtE=>rtE,
+        rdE=>rdE,
+        signImmE=>signImme,
+	FlushE=>FlushE
+    );
+
+alu1 : alu
+	port map (	
+		A=>SrcAE,
+		B=>SrcBE,
+		Y=>AluOUTE,
+		alucontrol=>alucontrolE
+	);
 
 hazardU : HazardUnit
     Port map(

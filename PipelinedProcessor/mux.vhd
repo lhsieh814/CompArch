@@ -4,7 +4,6 @@ use work.MIPSCPU_constants.all;
 
 -- Implementation of multiplexer
 Entity mux is 
-	Generic(W : integer);
 	Port(
 		D0, D1	: in std_logic_vector(register_size downto 0); -- two inputs
 		S			: in std_logic;	-- seletion line
