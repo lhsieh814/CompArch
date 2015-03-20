@@ -37,3 +37,12 @@ Step3 : 'java Main <filename>'
 		For example: 'java Main fib.asm'
 		
 Step4 : The binary machine code stores in the 'bin_result.txt'
+
+
+# CompArch Deliverable 2
+
+### Processor Part
+
+The 5 stages pipeline design has been implemented. The five stages are Fetch, Decode, Execute, Memory and Writeback stage. Each stage is connected by a register.
+
+Hazard and Forwarding are also implemented successfully. 
