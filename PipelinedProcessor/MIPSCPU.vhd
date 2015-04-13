@@ -1,11 +1,13 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 use work.MIPSCPU_constants.ALL;
-
-ENTITY MIPSCPU IS
+use IEEE.numeric_std.all;
+use STD.textio.all;ENTITY MIPSCPU IS
 END MIPSCPU;
 
 ARCHITECTURE behavior OF MIPSCPU IS
+
+--function to go from boolean to std_logic
     function To_Std_Logic(L: BOOLEAN) return std_logic is
     begin
         if L then
@@ -198,6 +200,7 @@ End component;
 component Reg_IFID is
 	port(
 		clk			: in std_logic;
+		PCSrcD			: in std_logic;
 		instruction		: in std_logic_vector(register_size downto 0);
 		pcPlus4			: in integer;
 		out_instrD		: out std_logic_vector(register_size downto 0);
@@ -250,6 +253,8 @@ component Reg_IFID is
 		signal dataToWrite : std_logic_vector(register_size downto 0);
 		signal memoryOutput : std_logic_vector(register_size downto 0);
 		
+		signal SignImmDSLL2 : std_logic_vector(register_size downto 0);
+		signal PCBranchD : integer;
 		signal PCSrcD: STD_LOGIC; 
 		signal regwriteD: STD_LOGIC; 
 		signal memtoregD: STD_LOGIC;
@@ -278,14 +283,18 @@ component Reg_IFID is
 		signal ALUOutE : std_logic_vector(register_size downto 0);
 		signal ALUOutM : STD_LOGIC_VECTOR(register_size downto 0);
 		signal resultW : STD_LOGIC_vector(register_size downto 0);
+		signal nextAddress : integer;
 begin
+nextAddress<=to_integer(unsigned(writedatam));
 PCPlus4f<=PCF+4;
 rsD<=instrD(25 downto 21);
 rtD<=instrD(20 downto 16);
 rdD<=instrD(15 downto 11);
 rsD<=instrD(25 downto 21);
+SignImmDSLL2<=SignImmD(register_size-2 downto 0)&"00";
 EqualD<=to_std_logic(MuxAOut=MuxBOut);
 PCSrcD<=(BranchD AND EqualD);
+PCBranchD<=to_integer(signed(SignImmDSLL2))+PCplus4D;
 
 --PCSrcD_Mux : Mux
 --	Port map(
@@ -363,6 +372,7 @@ PORT MAP(
 ifid : reg_ifid
 	port map(
 		clk=>clk,
+		PCSrcD=>PCSrcD,
 		instruction=>Instruction,
 		pcPlus4=>pcPlus4f,
 		out_instrD=>instrd,
@@ -373,11 +383,11 @@ ifid : reg_ifid
 dataMem: DataMemory 
 PORT MAP(
 	clk=>clk,
-	nextAddress=>memoryIn,
+	nextAddress=>nextAddress,
 	instReady=>memoryReady,
 	fetchNext=>fetchNextMemory,
-	readOrWrite=>readOrWrite,
-	dataToWrite=>dataToWrite,
+	readOrWrite=>memwritem,
+	dataToWrite=>aluoutm,
 	output=>memoryOutput
 );
 
@@ -415,7 +425,6 @@ port map(
 exmem :reg_exmem
     port map(
         clk=>clk,             
-
         regWriteE=>regWriteE,   
         memToRegE=>memToRegE,              
         memWriteE =>memWriteE,
