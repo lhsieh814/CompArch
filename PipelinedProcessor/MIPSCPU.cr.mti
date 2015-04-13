@@ -1,0 +1,198 @@
+H:/425_Project/CompArch/PipelinedProcessor/mux.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/mux.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity mux
+-- Compiling architecture behave of mux
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/ALU.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/ALU.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Loading package NUMERIC_STD
+-- Compiling entity ALU
+-- Compiling architecture behavior of ALU
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/DataMemory.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/DataMemory.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity DataMemory
+-- Compiling architecture behavior of DataMemory
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/reg_memwb.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/reg_memwb.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity REG_MEMWB
+-- Compiling architecture REG_MEMWB_ARC of REG_MEMWB
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/Mux_2Inputs32Bits.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/Mux_2Inputs32Bits.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Mux2_32
+-- Compiling architecture behavior of Mux2_32
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/RF.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/RF.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package MIPSCPU_constants
+-- Compiling entity RF
+-- Compiling architecture RTL of RF
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/programCounter.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/programCounter.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Loading package NUMERIC_STD
+-- Compiling entity programCounter
+-- Compiling architecture BEHV of programCounter
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/adder.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/adder.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package MIPSCPU_constants
+-- Compiling entity adder
+-- Compiling architecture behave of adder
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/SignImmE.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/SignImmE.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity SignImmE
+-- Compiling architecture behave of SignImmE
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/HazardUnit.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/HazardUnit.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package MIPSCPU_constants
+-- Compiling entity HazardUnit
+-- Compiling architecture behave of HazardUnit
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/instructionMemory.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/instructionMemory.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity instructionMemory
+-- Compiling architecture behavior of instructionMemory
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/Mux_3.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/Mux_3.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Mux_3
+-- Compiling architecture behavior of Mux_3
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/AndGate.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/AndGate.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity AndGate
+-- Compiling architecture behav of AndGate
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/instructionFetch.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/instructionFetch.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity instructionFetch
+-- Compiling architecture behavior of instructionFetch
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/RegisterFile.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/RegisterFile.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package MIPSCPU_constants
+-- Compiling entity RegisterFile
+-- Compiling architecture behavior of RegisterFile
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/MIPSCPU_constants.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/MIPSCPU_constants.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Compiling package MIPSCPU_constants
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/SignExtension.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/SignExtension.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity SignExtension
+-- Compiling architecture behave of SignExtension
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/Decoder.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/Decoder.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Decoder
+-- Compiling architecture behave of Decoder
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/reg_idex.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/reg_idex.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package MIPSCPU_constants
+-- Compiling entity reg_idex
+-- Compiling architecture behavior of reg_idex
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/ALUDecoder.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/ALUDecoder.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ALUDecoder
+-- Compiling architecture behavior of ALUDecoder
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/reg_exmem.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/reg_exmem.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package MIPSCPU_constants
+-- Compiling entity REG_EXMEM
+-- Compiling architecture REG_EXMEM_ARC of REG_EXMEM
+
+} {} {}} H:/425_Project/CompArch/PipelinedProcessor/ControlUnit.vhd {1 {vcom -work work -2002 -explicit H:/425_Project/CompArch/PipelinedProcessor/ControlUnit.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ControlUnit
+-- Compiling architecture behavior of ControlUnit
+
+} {} {}}

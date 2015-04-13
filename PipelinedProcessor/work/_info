@@ -1,0 +1,919 @@
+m255
+K3
+13
+cModel Technology
+dC:\altera\13.0
+Eadder
+Z0 w1428939268
+Z1 DPx4 work 17 mipscpu_constants 0 22 TID:]0SU`O[O1JN8>iJCk3
+Z2 DPx4 ieee 15 std_logic_arith 0 22 4`Y?g_lkdn;7UL9IiJck01
+Z3 DPx4 ieee 18 std_logic_unsigned 0 22 RYmj;=TK`k=k>D@Cz`zoB3
+Z4 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z5 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z6 dH:\425_Project\CompArch\PipelinedProcessor
+Z7 8H:/425_Project/CompArch/PipelinedProcessor/adder.vhd
+Z8 FH:/425_Project/CompArch/PipelinedProcessor/adder.vhd
+l0
+L6
+V@D;Sc>0CZd3bj8LhS>U=I1
+Z9 OV;C;10.1d;51
+32
+Z10 !s108 1428940665.520000
+Z11 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/adder.vhd|
+Z12 !s107 H:/425_Project/CompArch/PipelinedProcessor/adder.vhd|
+Z13 o-work work -2002 -explicit -O0
+Z14 tExplicit 1
+!s100 PjUcg8Jc1S4ICVf`Q8]UO1
+!i10b 1
+Abehave
+R1
+R2
+R3
+R4
+R5
+DEx4 work 5 adder 0 22 @D;Sc>0CZd3bj8LhS>U=I1
+l14
+L13
+Vif8z:b[B4[e;Z2>R^n8CQ2
+R9
+32
+R10
+R11
+R12
+R13
+R14
+!s100 zAYUlg0ngocKOk2n3ez2Y0
+!i10b 1
+Ealu
+Z15 w1428939268
+Z16 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+R1
+R4
+R5
+R6
+Z17 8H:/425_Project/CompArch/PipelinedProcessor/ALU.vhd
+Z18 FH:/425_Project/CompArch/PipelinedProcessor/ALU.vhd
+l0
+L9
+V5k6H^bHPPaQIERX`<4T>X1
+R9
+32
+Z19 !s108 1428940666.083000
+Z20 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/ALU.vhd|
+Z21 !s107 H:/425_Project/CompArch/PipelinedProcessor/ALU.vhd|
+R13
+R14
+!s100 0n:_DY1]94<L=4kkl[3b33
+!i10b 1
+Abehavior
+R16
+R1
+R4
+R5
+DEx4 work 3 alu 0 22 5k6H^bHPPaQIERX`<4T>X1
+l36
+L20
+VM?M9BJi8eEnQU^RjCJXdA2
+R9
+32
+R19
+R20
+R21
+R13
+R14
+!s100 P@^k@3ka7fY[j>lfkQCfF0
+!i10b 1
+Ealudecoder
+R15
+R4
+R5
+R6
+Z22 8H:/425_Project/CompArch/PipelinedProcessor/ALUDecoder.vhd
+Z23 FH:/425_Project/CompArch/PipelinedProcessor/ALUDecoder.vhd
+l0
+L4
+V8WSCnLk>anWVjO8OAS8DU1
+R9
+32
+Z24 !s108 1428940666.751000
+Z25 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/ALUDecoder.vhd|
+Z26 !s107 H:/425_Project/CompArch/PipelinedProcessor/ALUDecoder.vhd|
+R13
+R14
+!s100 h?jH?4hR5hXS_<4n:Sfa81
+!i10b 1
+Abehavior
+R4
+R5
+DEx4 work 10 aludecoder 0 22 8WSCnLk>anWVjO8OAS8DU1
+l12
+L11
+VN3ZnJ3HLRL1n99^oPe`H32
+R9
+32
+R24
+R25
+R26
+R13
+R14
+!s100 96AP<KH1VP4z>T>:L4Mkf0
+!i10b 1
+Eandgate
+R15
+R4
+R5
+R6
+Z27 8H:/425_Project/CompArch/PipelinedProcessor/AndGate.vhd
+Z28 FH:/425_Project/CompArch/PipelinedProcessor/AndGate.vhd
+l0
+L4
+V==KfP]g2Z5L5LaKo35Q732
+R9
+32
+Z29 !s108 1428940667.228000
+Z30 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/AndGate.vhd|
+Z31 !s107 H:/425_Project/CompArch/PipelinedProcessor/AndGate.vhd|
+R13
+R14
+!s100 9UKfJziEmCG`nk8IaK?3^1
+!i10b 1
+Abehav
+R4
+R5
+DEx4 work 7 andgate 0 22 ==KfP]g2Z5L5LaKo35Q732
+l13
+L12
+VEW:_DnCA<]bA29WeE;D>g0
+R9
+32
+R29
+R30
+R31
+R13
+R14
+!s100 3eiP3nM]b::ig]P>9`g]D1
+!i10b 1
+Ecomparator
+R15
+R1
+R4
+R5
+R6
+8H:/425_Project/CompArch/PipelinedProcessor/Comparator.vhd
+FH:/425_Project/CompArch/PipelinedProcessor/Comparator.vhd
+l0
+L5
+VmjM^6A[KTdXSgbbbgHc;A1
+R9
+32
+R13
+R14
+!s100 06G`3:W0TaBnhc]iIal:M3
+!i10b 1
+!s108 1428940711.042000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/Comparator.vhd|
+!s107 H:/425_Project/CompArch/PipelinedProcessor/Comparator.vhd|
+Econtrolunit
+R15
+R4
+R5
+R6
+Z32 8H:/425_Project/CompArch/PipelinedProcessor/ControlUnit.vhd
+Z33 FH:/425_Project/CompArch/PipelinedProcessor/ControlUnit.vhd
+l0
+L2
+V2>HzHHnSOOciLP9^So5282
+R9
+32
+Z34 !s108 1428940668.277000
+Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/ControlUnit.vhd|
+Z36 !s107 H:/425_Project/CompArch/PipelinedProcessor/ControlUnit.vhd|
+R13
+R14
+!s100 dPLmnmM^^<8^@=P;NaX0G3
+!i10b 1
+Abehavior
+R4
+R5
+DEx4 work 11 controlunit 0 22 2>HzHHnSOOciLP9^So5282
+l36
+L17
+V>z7Ihh<9zTe`1U`6J5o<m2
+R9
+32
+R34
+R35
+R36
+R13
+R14
+!s100 J9aPEL7VNii5kHnMB7fCC2
+!i10b 1
+Edatamemory
+R15
+R1
+R4
+R5
+R6
+Z37 8H:/425_Project/CompArch/PipelinedProcessor/DataMemory.vhd
+Z38 FH:/425_Project/CompArch/PipelinedProcessor/DataMemory.vhd
+l0
+L7
+Vf>b?V:P@EPCWUKa:g5KXJ1
+R9
+32
+Z39 !s108 1428940668.754000
+Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/DataMemory.vhd|
+Z41 !s107 H:/425_Project/CompArch/PipelinedProcessor/DataMemory.vhd|
+R13
+R14
+!s100 :e[O_A8@hK5_Q3?O5U<Pi3
+!i10b 1
+Abehavior
+R1
+R4
+R5
+DEx4 work 10 datamemory 0 22 f>b?V:P@EPCWUKa:g5KXJ1
+l63
+L19
+VgLhEW11NMgX^[zEjD`=T[1
+R9
+32
+R39
+R40
+R41
+R13
+R14
+!s100 Uh=Y8>QNogT^HS5IdhlMo1
+!i10b 1
+Edecoder
+R15
+R4
+R5
+R6
+Z42 8H:/425_Project/CompArch/PipelinedProcessor/Decoder.vhd
+Z43 FH:/425_Project/CompArch/PipelinedProcessor/Decoder.vhd
+l0
+L4
+VZnQD0gYfzhR39@F6K01893
+R9
+32
+Z44 !s108 1428940669.384000
+Z45 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/Decoder.vhd|
+Z46 !s107 H:/425_Project/CompArch/PipelinedProcessor/Decoder.vhd|
+R13
+R14
+!s100 S_W`PX_9B:Ff6aC5n0g5@0
+!i10b 1
+Abehave
+R4
+R5
+DEx4 work 7 decoder 0 22 ZnQD0gYfzhR39@F6K01893
+l16
+L14
+V<<a9F:JiL;>RTg148?cXm1
+R9
+32
+R44
+R45
+R46
+R13
+R14
+!s100 WB9:9F6V1IZl3eb]CH5LE1
+!i10b 1
+Ehazardunit
+R15
+R1
+R16
+R4
+R5
+R6
+Z47 8H:/425_Project/CompArch/PipelinedProcessor/HazardUnit.vhd
+Z48 FH:/425_Project/CompArch/PipelinedProcessor/HazardUnit.vhd
+l0
+L6
+VeaSaDQ@bEZ?0e`P4?O`[B0
+R9
+32
+Z49 !s108 1428940670.401000
+Z50 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/HazardUnit.vhd|
+Z51 !s107 H:/425_Project/CompArch/PipelinedProcessor/HazardUnit.vhd|
+R13
+R14
+!s100 5Am0Nhk[W9^LOHHf]V5EF2
+!i10b 1
+Abehave
+R1
+R16
+R4
+R5
+DEx4 work 10 hazardunit 0 22 eaSaDQ@bEZ?0e`P4?O`[B0
+l48
+L34
+V=8V]ij9kKI3];156ZMNnZ3
+R9
+32
+R49
+R50
+R51
+R13
+R14
+!s100 XcjB56W[];m;[jY__YCGk1
+!i10b 1
+Einstructiondecoding
+R15
+R16
+R4
+R5
+R6
+8H:/425_Project/CompArch/PipelinedProcessor/InstructionDecoding.vhd
+FH:/425_Project/CompArch/PipelinedProcessor/InstructionDecoding.vhd
+l0
+L5
+V9=EJ1gVlC>53UBS:>Kzf82
+!s100 5YbiSG`mI_E^HmN>AjeFh0
+R9
+32
+!i10b 1
+!s108 1428940711.726000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/InstructionDecoding.vhd|
+!s107 H:/425_Project/CompArch/PipelinedProcessor/InstructionDecoding.vhd|
+R13
+R14
+Einstructionfetch
+R15
+R1
+R4
+R5
+R6
+Z52 8H:/425_Project/CompArch/PipelinedProcessor/instructionFetch.vhd
+Z53 FH:/425_Project/CompArch/PipelinedProcessor/instructionFetch.vhd
+l0
+L7
+VNE:GF7ViS4TQhlj?6hYPn3
+R9
+32
+Z54 !s108 1428940671.233000
+Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/instructionFetch.vhd|
+Z56 !s107 H:/425_Project/CompArch/PipelinedProcessor/instructionFetch.vhd|
+R13
+R14
+!s100 NmNm;Kf`H62jPP<B2`o2R0
+!i10b 1
+Abehavior
+R1
+R4
+R5
+DEx4 work 16 instructionfetch 0 22 NE:GF7ViS4TQhlj?6hYPn3
+l65
+L23
+V_9M13CeYXJ1@[Ee]FR=Nb3
+R9
+32
+R54
+R55
+R56
+R13
+R14
+!s100 E6498RlN?7fFkE85h=gPi2
+!i10b 1
+Einstructionmemory
+R15
+R1
+R4
+R5
+R6
+Z57 8H:/425_Project/CompArch/PipelinedProcessor/instructionMemory.vhd
+Z58 FH:/425_Project/CompArch/PipelinedProcessor/instructionMemory.vhd
+l0
+L7
+VAkbd3:<oOd4zM`SQ1g=NZ1
+R9
+32
+Z59 !s108 1428940672.145000
+Z60 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/instructionMemory.vhd|
+Z61 !s107 H:/425_Project/CompArch/PipelinedProcessor/instructionMemory.vhd|
+R13
+R14
+!s100 38nX4HEBK]OXNK?lzec6R0
+!i10b 1
+Abehavior
+R1
+R4
+R5
+DEx4 work 17 instructionmemory 0 22 Akbd3:<oOd4zM`SQ1g=NZ1
+l61
+L19
+V<z1<7QW2i5[f2j9L<1om;3
+R9
+32
+R59
+R60
+R61
+R13
+R14
+!s100 1JEAC92NSV3b;6;YRVP0n1
+!i10b 1
+Emipscpu
+R15
+R1
+R4
+R5
+R6
+Z62 8H:/425_Project/CompArch/PipelinedProcessor/MIPSCPU.vhd
+Z63 FH:/425_Project/CompArch/PipelinedProcessor/MIPSCPU.vhd
+l0
+L5
+V??JEcMPXUYI36;7Yfk`SE0
+R9
+32
+Z64 !s108 1428940673.106000
+Z65 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/MIPSCPU.vhd|
+Z66 !s107 H:/425_Project/CompArch/PipelinedProcessor/MIPSCPU.vhd|
+R13
+R14
+!s100 C2UY=YJEWffYjla^_NC0c3
+!i10b 1
+Abehavior
+R1
+R4
+R5
+DEx4 work 7 mipscpu 0 22 ??JEcMPXUYI36;7Yfk`SE0
+l281
+L8
+VQjjD7k:SGIMC1N93SmCZm2
+R9
+32
+R64
+R65
+R66
+R13
+R14
+!s100 5g;@LFoS5Z]X_B6g48HfM0
+!i10b 1
+Pmipscpu_constants
+R15
+R6
+8H:/425_Project/CompArch/PipelinedProcessor/MIPSCPU_constants.vhd
+FH:/425_Project/CompArch/PipelinedProcessor/MIPSCPU_constants.vhd
+l0
+L1
+VTID:]0SU`O[O1JN8>iJCk3
+R9
+32
+R13
+R14
+!s100 Qgl_d5mRX3<]GiRelSb:Q3
+!i10b 1
+!s108 1428940673.763000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/MIPSCPU_constants.vhd|
+!s107 H:/425_Project/CompArch/PipelinedProcessor/MIPSCPU_constants.vhd|
+Emux
+R15
+R1
+R4
+R5
+R6
+Z67 8H:/425_Project/CompArch/PipelinedProcessor/mux.vhd
+Z68 FH:/425_Project/CompArch/PipelinedProcessor/mux.vhd
+l0
+L6
+VR<0[3YzZf59T9YBMRlV`a1
+R9
+32
+Z69 !s108 1428940674.432000
+Z70 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/mux.vhd|
+Z71 !s107 H:/425_Project/CompArch/PipelinedProcessor/mux.vhd|
+R13
+R14
+!s100 ^bC2:>Y2zMV^]MNEoMBHL3
+!i10b 1
+Abehave
+R1
+R4
+R5
+DEx4 work 3 mux 0 22 R<0[3YzZf59T9YBMRlV`a1
+l15
+L14
+V?D?GIYmIiYF>_V79eflb43
+R9
+32
+R69
+R70
+R71
+R13
+R14
+!s100 Scel4ISoQQKdD?fTfFooe1
+!i10b 1
+Emux2_32
+R15
+R4
+R5
+R6
+Z72 8H:/425_Project/CompArch/PipelinedProcessor/Mux_2Inputs32Bits.vhd
+Z73 FH:/425_Project/CompArch/PipelinedProcessor/Mux_2Inputs32Bits.vhd
+l0
+L5
+V9i67ie_3l[GRi7zbOz89H3
+R9
+32
+Z74 !s108 1428940674.971000
+Z75 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/Mux_2Inputs32Bits.vhd|
+Z76 !s107 H:/425_Project/CompArch/PipelinedProcessor/Mux_2Inputs32Bits.vhd|
+R13
+R14
+!s100 jTE^bRD;A;J5TGJmf;jDd1
+!i10b 1
+Abehavior
+R4
+R5
+DEx4 work 7 mux2_32 0 22 9i67ie_3l[GRi7zbOz89H3
+l13
+L12
+VNfAhIl<HNK`A]76MY;m7h2
+R9
+32
+R74
+R75
+R76
+R13
+R14
+!s100 5FCm:fW4f<R<YDCiZS5CL0
+!i10b 1
+Emux_3
+R15
+R4
+R5
+R6
+Z77 8H:/425_Project/CompArch/PipelinedProcessor/Mux_3.vhd
+Z78 FH:/425_Project/CompArch/PipelinedProcessor/Mux_3.vhd
+l0
+L5
+V[HJ3Q5nCTMZ]mC8n2=6z@1
+R9
+32
+Z79 !s108 1428940675.642000
+Z80 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/Mux_3.vhd|
+Z81 !s107 H:/425_Project/CompArch/PipelinedProcessor/Mux_3.vhd|
+R13
+R14
+!s100 [@h2G2zFm[fgMz16f8MK90
+!i10b 1
+Abehavior
+R4
+R5
+DEx4 work 5 mux_3 0 22 [HJ3Q5nCTMZ]mC8n2=6z@1
+l14
+L13
+VB@QDEWFnBZ5AEenWLlZ?_1
+R9
+32
+R79
+R80
+R81
+R13
+R14
+!s100 moO2nTj`1WRKBPlIT7_f_2
+!i10b 1
+Eprogramcounter
+R15
+R16
+R1
+R4
+R5
+R6
+Z82 8H:/425_Project/CompArch/PipelinedProcessor/programCounter.vhd
+Z83 FH:/425_Project/CompArch/PipelinedProcessor/programCounter.vhd
+l0
+L6
+V3_cLf]DVL]nGICBnVg<aP3
+R9
+32
+Z84 !s108 1428940676.242000
+Z85 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/programCounter.vhd|
+Z86 !s107 H:/425_Project/CompArch/PipelinedProcessor/programCounter.vhd|
+R13
+R14
+!s100 IAQgHk9fJ1cMn8c<@AUNF3
+!i10b 1
+Abehv
+R16
+R1
+R4
+R5
+DEx4 work 14 programcounter 0 22 3_cLf]DVL]nGICBnVg<aP3
+l21
+L19
+V02jB_ELM:6GKbGa3_WcjL2
+R9
+32
+R84
+R85
+R86
+R13
+R14
+!s100 o^MIn:NJ3V=6AI:I5cWJf1
+!i10b 1
+Ereg_exmem
+R15
+R1
+R16
+R4
+R5
+R6
+Z87 8H:/425_Project/CompArch/PipelinedProcessor/reg_exmem.vhd
+Z88 FH:/425_Project/CompArch/PipelinedProcessor/reg_exmem.vhd
+l0
+L6
+VRjO[=fakIKVmcESgZR4Dk1
+R9
+32
+Z89 !s108 1428940676.948000
+Z90 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/reg_exmem.vhd|
+Z91 !s107 H:/425_Project/CompArch/PipelinedProcessor/reg_exmem.vhd|
+R13
+R14
+!s100 6eVZXP2LCDBJ61hH4NL6>2
+!i10b 1
+Areg_exmem_arc
+R1
+R16
+R4
+R5
+DEx4 work 9 reg_exmem 0 22 RjO[=fakIKVmcESgZR4Dk1
+l28
+L27
+VaYS`A5H_T_=NUzYJnz]c?0
+R9
+32
+R89
+R90
+R91
+R13
+R14
+!s100 J<8@U07@>S>85[oJ^z<ka2
+!i10b 1
+Ereg_idex
+R15
+R1
+R16
+R4
+R5
+R6
+Z92 8H:/425_Project/CompArch/PipelinedProcessor/reg_idex.vhd
+Z93 FH:/425_Project/CompArch/PipelinedProcessor/reg_idex.vhd
+l0
+L6
+V83cJdc8lCiFY]N<eeCZjP0
+R9
+32
+Z94 !s108 1428940677.581000
+Z95 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/reg_idex.vhd|
+Z96 !s107 H:/425_Project/CompArch/PipelinedProcessor/reg_idex.vhd|
+R13
+R14
+!s100 zBG6hKj:A09ZETN0[?`b=1
+!i10b 1
+Abehavior
+R1
+R16
+R4
+R5
+DEx4 work 8 reg_idex 0 22 83cJdc8lCiFY]N<eeCZjP0
+l40
+L39
+Vz6zd[VB[cgPeN;A2j55^U0
+R9
+32
+R94
+R95
+R96
+R13
+R14
+!s100 <Je>Q[TK@LmznNAVdUWn:3
+!i10b 1
+Ereg_ifid
+R15
+R1
+R4
+R5
+R6
+Z97 8H:/425_Project/CompArch/PipelinedProcessor/reg_ifid.vhd
+Z98 FH:/425_Project/CompArch/PipelinedProcessor/reg_ifid.vhd
+l0
+L5
+V=naDLzE]OM:n4LVoi@]d?0
+R9
+32
+Z99 !s108 1428940678.590000
+Z100 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/reg_ifid.vhd|
+Z101 !s107 H:/425_Project/CompArch/PipelinedProcessor/reg_ifid.vhd|
+R13
+R14
+!s100 ?P[[6z>GkLDSgV63z`YC=3
+!i10b 1
+Areg_ifid_arc
+R1
+R4
+R5
+DEx4 work 8 reg_ifid 0 22 =naDLzE]OM:n4LVoi@]d?0
+l17
+L16
+V<^zzDb@BT^`Doe4n]?Qbe3
+R9
+32
+R99
+R100
+R101
+R13
+R14
+!s100 JH8Q8b_JQinN1I^Z9]@KQ0
+!i10b 1
+Ereg_memwb
+R15
+R1
+R4
+R5
+R6
+Z102 8H:/425_Project/CompArch/PipelinedProcessor/reg_memwb.vhd
+Z103 FH:/425_Project/CompArch/PipelinedProcessor/reg_memwb.vhd
+l0
+L5
+V[7aPVcFR^L0gzg>WCP^BX1
+R9
+32
+Z104 !s108 1428940679.075000
+Z105 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/reg_memwb.vhd|
+Z106 !s107 H:/425_Project/CompArch/PipelinedProcessor/reg_memwb.vhd|
+R13
+R14
+!s100 blbHB<:1_U8TKlhbk@=DU3
+!i10b 1
+Areg_memwb_arc
+R1
+R4
+R5
+DEx4 work 9 reg_memwb 0 22 [7aPVcFR^L0gzg>WCP^BX1
+l24
+L23
+V>PcEFUPDSm_;c<8a^Vfal0
+R9
+32
+R104
+R105
+R106
+R13
+R14
+!s100 <E0KRYo;KD`1ThhRUVLi61
+!i10b 1
+Eregisterfile
+R15
+R1
+R16
+R4
+R5
+R6
+Z107 8H:/425_Project/CompArch/PipelinedProcessor/RegisterFile.vhd
+Z108 FH:/425_Project/CompArch/PipelinedProcessor/RegisterFile.vhd
+l0
+L6
+VJM^4:3ORWbeS2fElI@k1d3
+R9
+32
+Z109 !s108 1428940679.853000
+Z110 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/RegisterFile.vhd|
+Z111 !s107 H:/425_Project/CompArch/PipelinedProcessor/RegisterFile.vhd|
+R13
+R14
+!s100 @2UzM:A<EKzhZY3YFPRUH0
+!i10b 1
+Abehavior
+R1
+R16
+R4
+R5
+DEx4 work 12 registerfile 0 22 JM^4:3ORWbeS2fElI@k1d3
+l22
+L21
+Vi:iYFXXfo:Q`YFi=HNKA32
+R9
+32
+R109
+R110
+R111
+R13
+R14
+!s100 CGDkmMjPBR<i?K6hMzIbV3
+!i10b 1
+Erf
+R15
+R1
+R16
+R4
+R5
+R6
+Z112 8H:/425_Project/CompArch/PipelinedProcessor/RF.vhd
+Z113 FH:/425_Project/CompArch/PipelinedProcessor/RF.vhd
+l0
+L8
+VTXX41LZJfZVV?16aJc76o2
+R9
+32
+Z114 !s108 1428940680.601000
+Z115 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/RF.vhd|
+Z116 !s107 H:/425_Project/CompArch/PipelinedProcessor/RF.vhd|
+R13
+R14
+!s100 2PaH_P3YETEQKWgOUUCzd1
+!i10b 1
+Artl
+R1
+R16
+R4
+R5
+DEx4 work 2 rf 0 22 TXX41LZJfZVV?16aJc76o2
+l26
+L21
+VLdTg0g9I_H@T=`B]e`ze80
+R9
+32
+R114
+R115
+R116
+R13
+R14
+!s100 ne^CUmQZb7DCmb40ITI<S3
+!i10b 1
+Esignextension
+R15
+R1
+R4
+R5
+R6
+Z117 8H:/425_Project/CompArch/PipelinedProcessor/SignExtension.vhd
+Z118 FH:/425_Project/CompArch/PipelinedProcessor/SignExtension.vhd
+l0
+L5
+V>UCE2`Hii]j:6DS?QINQH2
+R9
+32
+Z119 !s108 1428940681.416000
+Z120 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/SignExtension.vhd|
+Z121 !s107 H:/425_Project/CompArch/PipelinedProcessor/SignExtension.vhd|
+R13
+R14
+!s100 b27e29Taozf1=Zf290WW=1
+!i10b 1
+Abehave
+R1
+R4
+R5
+DEx4 work 13 signextension 0 22 >UCE2`Hii]j:6DS?QINQH2
+l13
+L12
+V;_KUR3[1JT]AaO;UI8;RH0
+R9
+32
+R119
+R120
+R121
+R13
+R14
+!s100 ]=A`Z4cAh1g@>0FD4H3ID0
+!i10b 1
+Esignimme
+R15
+R1
+R4
+R5
+R6
+Z122 8H:/425_Project/CompArch/PipelinedProcessor/SignImmE.vhd
+Z123 FH:/425_Project/CompArch/PipelinedProcessor/SignImmE.vhd
+l0
+L5
+V13`OQNMLN^fD:m[cPT2aV2
+R9
+32
+Z124 !s108 1428940682.103000
+Z125 !s90 -reportprogress|300|-work|work|-2002|-explicit|H:/425_Project/CompArch/PipelinedProcessor/SignImmE.vhd|
+Z126 !s107 H:/425_Project/CompArch/PipelinedProcessor/SignImmE.vhd|
+R13
+R14
+!s100 Ah;kFOk;iY>7W_WDDdhg^3
+!i10b 1
+Abehave
+R1
+R4
+R5
+DEx4 work 8 signimme 0 22 13`OQNMLN^fD:m[cPT2aV2
+l12
+L11
+V:YnD^FHLHiz^WznTSjBQL2
+R9
+32
+R124
+R125
+R126
+R13
+R14
+!s100 =R1RJm2o^O59F9faCfhP91
+!i10b 1
