@@ -1,0 +1,216 @@
+C:/Users/James/Desktop/pipelinedCPU/mux.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/mux.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity mux
+-- Compiling architecture behave of mux
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/ALU.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/ALU.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Loading package NUMERIC_STD
+-- Compiling entity ALU
+-- Compiling architecture behavior of ALU
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/tb_Main_Memory.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/tb_Main_Memory.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity tb_Main_Memory
+-- Compiling architecture behavior of tb_Main_Memory
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/DataMemory.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/DataMemory.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity DataMemory
+-- Compiling architecture behavior of DataMemory
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/reg_memwb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/reg_memwb.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity REG_MEMWB
+-- Compiling architecture REG_MEMWB_ARC of REG_MEMWB
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/Main_Memory.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/Main_Memory.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Main_Memory
+-- Compiling architecture Behavioural of Main_Memory
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/RF.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/RF.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package MIPSCPU_constants
+-- Compiling entity RF
+-- Compiling architecture RTL of RF
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/Adder.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/Adder.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package MIPSCPU_constants
+-- Compiling entity adder
+-- Compiling architecture behave of adder
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/programCounter.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/programCounter.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Loading package NUMERIC_STD
+-- Compiling entity programCounter
+-- Compiling architecture BEHV of programCounter
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/SignImmE.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/SignImmE.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity SignImmE
+-- Compiling architecture behave of SignImmE
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/ALUOP.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/ALUOP.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Loading package NUMERIC_STD
+-- Compiling entity ALUOP
+-- Compiling architecture behavior of ALUOP
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/HazardUnit.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/HazardUnit.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package MIPSCPU_constants
+-- Compiling entity HazardUnit
+-- Compiling architecture behave of HazardUnit
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/Memory_in_Byte.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/Memory_in_Byte.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Memory_in_Byte
+-- Compiling architecture Behavioural of Memory_in_Byte
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/instructionMemory.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/instructionMemory.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity instructionMemory
+-- Compiling architecture behavior of instructionMemory
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/Mux_3.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/Mux_3.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Mux_3
+-- Compiling architecture behavior of Mux_3
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/MIPSCPU_constants.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/MIPSCPU_constants.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Compiling package MIPSCPU_constants
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/SignExtension.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/SignExtension.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity SignExtension
+-- Compiling architecture behave of SignExtension
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/Decoder.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/Decoder.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Decoder
+-- Compiling architecture behave of Decoder
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/reg_idex.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/reg_idex.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package MIPSCPU_constants
+-- Compiling entity reg_idex
+-- Compiling architecture behavior of reg_idex
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/ALUDecoder.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/ALUDecoder.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ALUDecoder
+-- Compiling architecture behavior of ALUDecoder
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/reg_ifid.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/reg_ifid.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Compiling entity Reg_IFID
+-- Compiling architecture Reg_IFID_ARC of Reg_IFID
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/MIPSCPU.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/MIPSCPU.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MIPSCPU_constants
+-- Loading package NUMERIC_STD
+-- Compiling entity MIPSCPU
+-- Compiling architecture behavior of MIPSCPU
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/reg_exmem.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/reg_exmem.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package MIPSCPU_constants
+-- Compiling entity REG_EXMEM
+-- Compiling architecture REG_EXMEM_ARC of REG_EXMEM
+
+} {} {}} C:/Users/James/Desktop/pipelinedCPU/ControlUnit.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/James/Desktop/pipelinedCPU/ControlUnit.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ControlUnit
+-- Compiling architecture behavior of ControlUnit
+
+} {} {}}
