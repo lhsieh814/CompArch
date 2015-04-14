@@ -5,19 +5,19 @@ use work.MIPSCPU_constants.ALL;
 
 Entity HazardUnit is
     Port(
-        StallF  : out std_logic;
-        StallD  : out std_logic;
-        BranchD : in std_logic;
-        ForwardAD : out std_logic;
-        ForwardBD : out std_logic;
+        StallF  : out std_logic := '0';
+        StallD  : out std_logic := '0';
+        BranchD : in std_logic := '0';
+        ForwardAD : out std_logic := '0';
+        ForwardBD : out std_logic := '0';
         rsD : in std_logic_vector(4 downto 0);
         rtD : in std_logic_vector(4 downto 0);
-        FlushE : out std_logic;
+        FlushE : out std_logic := '0';
         rsE : in std_logic_vector(4 downto 0);
         rtE : in std_logic_vector(4 downto 0);
         
-        ForwardAE : out std_logic_vector(1 downto 0);
-        ForwardBE : out std_logic_vector(1 downto 0);
+        ForwardAE : out std_logic_vector(1 downto 0) := "00";
+        ForwardBE : out std_logic_vector(1 downto 0) := "00";
         WriteRegE : in std_logic_vector(4 downto 0);
         MemToRegE : in std_logic;
         RegWriteE : in std_logic;
@@ -48,6 +48,9 @@ Architecture behave of HazardUnit is
     begin
         ForwardAE<="10" when (rsE /= "00000") AND (rsE = WriteRegM) AND (RegWriteM='1') else
                     "01" when  ((rsE /= "00000") AND (rsE = WriteRegW) AND (RegWriteW='1')) else
+                    "00";
+        ForwardBE<="10" when (rtE /= "00000") AND (rtE = WriteRegM) AND (RegWriteM='1') else
+                    "01" when  ((rtE /= "00000") AND (rtE = WriteRegW) AND (RegWriteW='1')) else
                     "00";
 
         lwstall<=to_std_logic((rsD=rtE OR rtD=rtE) AND (MemtoRegE='1'));

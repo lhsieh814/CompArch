@@ -13,21 +13,21 @@ Entity RF is
 		WD3	: in std_logic_vector(register_size downto 0);
 		clk	: in std_logic;
 		We3	: in std_logic;
-		RD1 : out std_logic_vector(register_size downto 0);
-		RD2	: out std_logic_vector(register_size downto 0)
+		RD1 	: out std_logic_vector(register_size downto 0) := "00000000000000000000000000000000";
+		RD2	: out std_logic_vector(register_size downto 0) := "00000000000000000000000000000000"
 	);
 	End RF;
 	
 Architecture RTL of RF is
 
 	type ffd_vector is array (register_size downto 0) of std_logic_vector(register_size downto 0);
-	signal ffd : ffd_vector;
+	signal ffd : ffd_vector := ((others=> (others=>'0')));
 	
 	begin
 		process (A1, A2, A3, clk)
-		Variable Aux1 : integer;
-		Variable Aux2 : integer;
-		Variable Aux3 : integer;
+		Variable Aux1 : integer := 0;
+		Variable Aux2 : integer := 0;
+		Variable Aux3 : integer := 0;
 		
 	begin
 		Aux1 := to_integer(unsigned(A1));

@@ -11,8 +11,8 @@ PORT(
 	instReady : out std_logic := '0';
 	fetchNext : in std_logic := '0';
 	readOrWrite : in std_logic := '0';
-	dataToWrite : in std_logic_vector(register_size downto 0);
-	output : OUT STD_LOGIC_VECTOR(register_size DOWNTO 0)
+	dataToWrite : in std_logic_vector(register_size downto 0) := "00000000000000000000000000000000";
+	output : OUT STD_LOGIC_VECTOR(register_size DOWNTO 0) :="00000000000000000000000000000000"
 );
 END DataMemory;
 

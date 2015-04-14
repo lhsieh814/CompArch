@@ -18,6 +18,23 @@ begin
     end if;
 end function To_Std_Logic;
 
+component REG_MEMWB is
+  port(
+      clk         : in std_logic;
+      regWriteM   : in std_logic;
+      memToRegM   : in std_logic;
+      readDataM   : in std_logic_vector(register_size downto 0);
+      aluOutM     : in std_logic_vector(register_size downto 0);
+      writeRegM   : in std_logic_vector(4 downto 0);
+
+      regWriteW   : out std_logic;
+      memToRegW   : out std_logic;
+      readDataW   : out std_logic_vector(register_size downto 0);
+      aluOutW     : out std_logic_vector(register_size downto 0);
+      writeRegW   : out std_logic_vector(4 downto 0)
+      );
+end component;
+
 component REG_EXMEM is 
     port(
         clk        :   in STD_LOGIC;                    
@@ -224,74 +241,77 @@ signal PCF : integer := 0;--
 signal PCIn : integer := 0;--
 signal Instruction : STD_LOGIC_VECTOR(register_size DOWNTO 0);--
 signal InstrD : STD_LOGIC_VECTOR(register_size DOWNTO 0);--
-signal PCPrime : integer;--MUST ENTER WB-IF REGISTER
-signal PCPlus4f : integer;--
-signal PCplus4d : integer;--
-signal PCReady : STD_LOGIC;--
-signal StallF : std_logic;--
-signal StallD  : std_logic;--
-signal BranchD : std_logic;--
-signal ForwardAD : std_logic;--
-signal ForwardBD : std_logic;--
-signal rsD : std_logic_vector(4 downto 0);--
-signal rtD : std_logic_vector(4 downto 0);--
-signal rdD : std_logic_vector(4 downto 0);--
-signal FlushE :  std_logic;--
-signal rsE : std_logic_vector(4 downto 0);--
-signal rtE : std_logic_vector(4 downto 0);--
-signal rdE : std_logic_vector(4 downto 0);--
-signal ForwardAE : std_logic_vector(1 downto 0);--
-signal ForwardBE : std_logic_vector(1 downto 0);--
-signal WriteRegE : std_logic_vector(4 downto 0);--
-signal MemToRegE : std_logic;--
-signal RegWriteE : std_logic;--
+signal PCPrime : integer:= 0;--
+signal PCPlus4f : integer:= 0;----
+signal PCplus4d : integer:= 0;----
+signal PCReady : STD_LOGIC:= '0';----
+signal StallF : std_logic:= '0';
+signal StallD  : std_logic:= '0';
+signal BranchD : std_logic:= '0';
+signal ForwardAD : std_logic:= '0';
+signal ForwardBD : std_logic:= '0';
+signal rsD : std_logic_vector(4 downto 0):= "00000";
+signal rtD : std_logic_vector(4 downto 0):= "00000";
+signal rdD : std_logic_vector(4 downto 0):= "00000";
+signal FlushE :  std_logic:= '0';
+signal rsE : std_logic_vector(4 downto 0):= "00000";
+signal rtE : std_logic_vector(4 downto 0):= "00000";
+signal rdE : std_logic_vector(4 downto 0):= "00000";
+signal ForwardAE : std_logic_vector(1 downto 0):= "00";
+signal ForwardBE : std_logic_vector(1 downto 0):= "00";
+signal WriteRegE : std_logic_vector(4 downto 0):= "00000";
+signal MemToRegE : std_logic:= '0';
+signal RegWriteE : std_logic:= '0';
 
-signal WriteRegM : std_logic_vector(4 downto 0);--
-signal MemToRegM : std_logic;--
-signal RegWriteM : std_logic;--
-signal MemWriteM : std_logic;--
-signal writeDataM : std_logic_vector(register_size downto 0);--  
-signal WriteRegW : std_logic_vector(4 downto 0);--
-signal RegWriteW : std_logic;--
+signal WriteRegM : std_logic_vector(4 downto 0):= "00000";
+signal MemToRegM : std_logic:= '0';
+signal RegWriteM : std_logic:= '0';
+signal MemWriteM : std_logic:= '0';
+signal writeDataM : std_logic_vector(register_size downto 0):="00000000000000000000000000000000";--  
+signal WriteRegW : std_logic_vector(4 downto 0):="00000";
+signal RegWriteW : std_logic:='0';--
 
-signal memoryReady : std_logic;--
-signal fetchNextMemory : std_logic;
-signal readOrWrite : std_logic;
-signal dataToWrite : std_logic_vector(register_size downto 0);
-signal memoryOutput : std_logic_vector(register_size downto 0);
+signal memoryReady : std_logic:='0';--
+signal fetchNextMemory : std_logic:='0';
+signal readOrWrite : std_logic:='0';
+signal dataToWrite : std_logic_vector(register_size downto 0):="00000000000000000000000000000000";-- 
 
-signal SignImmDSLL2 : std_logic_vector(register_size downto 0);--
-signal PCBranchD : integer;--
-signal PCSrcD: STD_LOGIC;--
-signal RegWriteD: STD_LOGIC; --
-signal MemToRegD: STD_LOGIC;--
-signal MemWriteD:  STD_LOGIC;--
-signal alucontrolD:  STD_LOGIC_VECTOR(3 downto 0);--
-signal alusrcD:  STD_LOGIC;--
-signal regdstD:  STD_LOGIC;--
-signal jumpD:  STD_LOGIC;
-signal SignImmD : std_logic_vector(register_size downto 0);--
-signal RD1d : std_logic_vector(register_size downto 0);--
-signal RD2d : std_logic_vector(register_size downto 0);--
-signal EqualD : std_logic;--
-signal MuxAOut : std_logic_vector(register_size downto 0);--
-signal MuxBOut : std_logic_vector(register_size downto 0);--
+signal SignImmDSLL2 : std_logic_vector(register_size downto 0):="00000000000000000000000000000000";-- 
+signal PCBranchD : integer:= 0;
+signal PCSrcD: STD_LOGIC:='0';
+signal RegWriteD: STD_LOGIC:='0';
+signal MemToRegD: STD_LOGIC:='0';
+signal MemWriteD:  STD_LOGIC:='0';
+signal alucontrolD:  STD_LOGIC_VECTOR(3 downto 0):="0000";
+signal alusrcD:  STD_LOGIC:='0';
+signal regdstD:  STD_LOGIC:='0';
+signal jumpD:  STD_LOGIC:='0';
+signal SignImmD : std_logic_vector(register_size downto 0):="00000000000000000000000000000000";-- 
+signal RD1d : std_logic_vector(register_size downto 0):="00000000000000000000000000000000";-- 
+signal RD2d : std_logic_vector(register_size downto 0):="00000000000000000000000000000000";-- 
+signal EqualD : std_logic:='0';--
+signal MuxAOut : std_logic_vector(register_size downto 0):="00000000000000000000000000000000";-- 
+signal MuxBOut : std_logic_vector(register_size downto 0):="00000000000000000000000000000000";-- 
+signal ReadDataM : std_logic_vector(register_size downto 0):="00000000000000000000000000000000";-- 
+signal MemToRegW : std_logic:='0';
+signal ReadDataW : std_logic_vector(register_size downto 0):="00000000000000000000000000000000";-- 
+signal aluOutW : std_logic_Vector(register_size downto 0):="00000000000000000000000000000000";-- 
 
-signal MemWriteE :std_logic;--	
-signal aluControlE:std_logic_vector(3 downto 0);--
-signal aluSrcE: std_logic;--
-signal regDstE :std_logic;--
-signal signImmE :std_logic_vector(register_size downto 0);--
-signal SrcAE : STD_LOGIC_VECTOR(register_size downto 0);--
-signal SrcBE : STD_LOGIC_VECTOR(register_size downto 0);--
-signal WriteDataE : STD_LOGIC_VECTOR(register_size downto 0);--
-signal RD1e : std_logic_vector(register_size downto 0);--
-signal RD2e : std_logic_vector(register_size downto 0);--
-signal ALUOutE : std_logic_vector(register_size downto 0);--
-signal ALUOutM : STD_LOGIC_VECTOR(register_size downto 0) := "00000000000000000000000000000000";--
-signal resultW : STD_LOGIC_vector(register_size downto 0);--
-signal nextAddress : integer;
-signal ALUOutMInt : integer;
+signal MemWriteE :std_logic:='0';
+signal aluControlE:std_logic_vector(3 downto 0):="0000";--
+signal aluSrcE: std_logic:='0';
+signal regDstE :std_logic:='0';
+signal signImmE :std_logic_vector(register_size downto 0):="00000000000000000000000000000000";-- 
+signal SrcAE : STD_LOGIC_VECTOR(register_size downto 0):="00000000000000000000000000000000";-- 
+signal SrcBE : STD_LOGIC_VECTOR(register_size downto 0):="00000000000000000000000000000000";-- 
+signal WriteDataE : STD_LOGIC_VECTOR(register_size downto 0):="00000000000000000000000000000000";-- 
+signal RD1e : std_logic_vector(register_size downto 0):="00000000000000000000000000000000";-- 
+signal RD2e : std_logic_vector(register_size downto 0):="00000000000000000000000000000000";-- 
+signal ALUOutE : std_logic_vector(register_size downto 0):="00000000000000000000000000000000";-- 
+signal ALUOutM : STD_LOGIC_VECTOR(register_size downto 0):="00000000000000000000000000000000";--
+signal resultW : STD_LOGIC_vector(register_size downto 0):="00000000000000000000000000000000";-- 
+signal nextAddress : integer:=0;
+signal ALUOutMInt : integer:=0;
 
 begin
 
@@ -340,6 +360,14 @@ muxSrcBE : Mux
 		D1=>SignImmE,		
 		S=>AluSRCE,
 		Y=>SrcBE
+	);
+
+muxResultW : Mux
+	Port map(
+		D0=>ALUOutW,
+		D1=>ReadDAtaW,		
+		S=>MemToRegW,
+		Y=>ResultW
 	);
 
 registerFile : RF
@@ -400,7 +428,7 @@ PORT MAP(
 	fetchNext=>fetchNextMemory,
 	readOrWrite=>memWritem,
 	dataToWrite=>writeDataM,
-	output=>memoryOutput
+	output=>ReadDataM
 );
 
 mux3A : Mux_3
@@ -481,7 +509,7 @@ idex : reg_idex
         rtE=>rtE,
         rdE=>rdE,
         signImmE=>signImme,
-	FlushE=>FlushE
+		FlushE=>FlushE
     );
 
 alu1 : alu
@@ -518,5 +546,21 @@ hazardU : HazardUnit
         RegWriteW=>RegWriteW
     );
 
+
+memwb: REG_MEMWB 
+  port map(
+      clk=>clk,
+      regWriteM=>regWriteM,
+      memToRegM=>memToRegM,
+      readDataM=>readDataM,
+      aluOutM=>aluOutM,
+      writeRegM=>writeRegM,
+
+      regWriteW=>regWriteW,
+      memToRegW=>memToRegW,
+      readDataW=>readDataW,
+      aluOutW=>aluOutW,
+      writeRegW=>writeRegW
+  );
 
 END;

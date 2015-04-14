@@ -10,9 +10,9 @@ ENTITY ALU IS
 	port (	
 		A : in std_logic_vector(register_size downto 0);
 		B : in std_logic_vector(register_size downto 0);
-		Y : out std_logic_vector(register_size downto 0);
-		HI : out std_logic_vector(register_size downto 0);
-		LO : out std_logic_vector(register_size downto 0);
+		Y : out std_logic_vector(register_size downto 0) := "00000000000000000000000000000000";
+		HI : out std_logic_vector(register_size downto 0) := "00000000000000000000000000000000";
+		LO : out std_logic_vector(register_size downto 0) := "00000000000000000000000000000000";
 		alucontrol : in std_logic_vector(3 downto 0)
 	);
 END ALU;

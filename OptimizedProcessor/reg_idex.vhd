@@ -26,13 +26,13 @@ entity reg_idex is
         aluControlE : out STD_LOGIC_VECTOR(3 downto 0);
         aluSrcE : out STD_LOGIC;
         regDstE : out STD_LOGIC;
- 	rd1e : out STD_LOGIC_VECTOR(register_size downto 0);
+ 	    rd1e : out STD_LOGIC_VECTOR(register_size downto 0);
         rd2e : out STD_LOGIC_VECTOR(register_size downto 0);
         rsE : out STD_LOGIC_VECTOR(4 downto 0);
         rtE : out STD_LOGIC_VECTOR(4 downto 0);
         rdE : out STD_LOGIC_VECTOR(4 downto 0);
         signImmE : out STD_LOGIC_VECTOR(register_size downto 0);
-	FlushE : in std_logic
+	    FlushE : in std_logic
     );
 end reg_idex;
 
@@ -54,6 +54,8 @@ begin
             rsE <= rsD;
             rtE <= rtD;
             rdE <= rdD;
+            rd1E <= rd1D;
+            rd2E <= rd2D;
             regWriteE <= regWriteD;
             memToRegE <= memToRegD;
             memWriteE <= memWriteD;

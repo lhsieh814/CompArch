@@ -3,14 +3,14 @@ entity ControlUnit is
 port(
 	op: in STD_LOGIC_VECTOR(5 downto 0);
 	funct: in STD_LOGIC_VECTOR(5 downto 0);
-	regwrite: out STD_LOGIC; 
-	memtoreg: out STD_LOGIC;
-	memwrite: out STD_LOGIC;
-	alucontrol: out STD_LOGIC_VECTOR(3 downto 0);
-	alusrc: out STD_LOGIC;
-	regdst: out STD_LOGIC;
-	branch: out STD_LOGIC;
-	jump: out STD_LOGIC
+	regwrite: out STD_LOGIC := '0'; 
+	memtoreg: out STD_LOGIC := '0'; 
+	memwrite: out STD_LOGIC := '0'; 
+	alucontrol: out STD_LOGIC_VECTOR(3 downto 0) := "0000"; 
+	alusrc: out STD_LOGIC := '0'; 
+	regdst: out STD_LOGIC := '0'; 
+	branch: out STD_LOGIC := '0'; 
+	jump: out STD_LOGIC:= '0' 
 );
 end;
 
