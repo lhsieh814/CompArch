@@ -2,25 +2,25 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 use work.MIPSCPU_constants.ALL;
 use IEEE.numeric_std.all;
-use STD.textio.all;ENTITY MIPSCPU IS
+use STD.textio.all;
+ENTITY MIPSCPU IS
 END MIPSCPU;
 
 ARCHITECTURE behavior OF MIPSCPU IS
 
 --function to go from boolean to std_logic
-    function To_Std_Logic(L: BOOLEAN) return std_logic is
-    begin
-        if L then
-        return('1');
-        else
-        return('0');
-        end if;
-    end function To_Std_Logic;
+function To_Std_Logic(L: BOOLEAN) return std_logic is
+begin
+    if L then
+    	return('1');
+    else
+    	return('0');
+    end if;
+end function To_Std_Logic;
 
 component REG_EXMEM is 
     port(
         clk        :   in STD_LOGIC;                    
-
         regWriteE  :   in STD_LOGIC;   
         memToRegE  :   in STD_LOGIC;                 
         memWriteE  :   in STD_LOGIC;                
@@ -44,7 +44,16 @@ component mux is
 		S			: in std_logic;	-- seletion line
 		Y 			: out std_logic_vector(register_size downto 0)
 	);
-	End component;
+end component;
+
+component mux_5bit is 
+	Port(
+		D0, D1	: in std_logic_vector(4 downto 0); -- two inputs
+		S			: in std_logic;	-- seletion line
+		Y 			: out std_logic_vector(4 downto 0)
+	);
+end component;
+
 
 component DataMemory IS
 PORT(
@@ -82,8 +91,7 @@ component reg_idex is
         rtD : in STD_LOGIC_VECTOR(4 downto 0);
         rdD : in STD_LOGIC_VECTOR(4 downto 0);
         signImmD : in STD_LOGIC_VECTOR(register_size downto 0);
-
- 	rd1e : out STD_LOGIC_VECTOR(register_size downto 0);
+ 		rd1e : out STD_LOGIC_VECTOR(register_size downto 0);
         rd2e : out STD_LOGIC_VECTOR(register_size downto 0);
         regWriteE : out STD_LOGIC;
         memToRegE : out STD_LOGIC;
@@ -95,7 +103,7 @@ component reg_idex is
         rtE : out STD_LOGIC_VECTOR(4 downto 0);
         rdE : out STD_LOGIC_VECTOR(4 downto 0);
         signImmE : out STD_LOGIC_VECTOR(register_size downto 0);
-	FlushE : in std_logic
+		FlushE : in std_logic
     );
 end component;
 
@@ -104,7 +112,7 @@ component SignExtension is
 		A	: in std_logic_vector(15 downto 0);
 		Y	: out std_logic_vector(register_size downto 0)
 	);
-	End component;
+end component;
 
 component RF is
 	port(
@@ -117,7 +125,7 @@ component RF is
 		RD1 : out std_logic_vector(register_size downto 0);
 		RD2	: out std_logic_vector(register_size downto 0)
 	);
-	End component;
+end component;
 
 component instructionMemory IS
 PORT(
@@ -170,7 +178,7 @@ port(
 end component;
 
 component HazardUnit is
-    Port(
+    port(
         StallF  : out std_logic;
         StallD  : out std_logic;
         BranchD : in std_logic;
@@ -195,7 +203,7 @@ component HazardUnit is
         WriteRegW : in std_logic_vector(4 downto 0);
         RegWriteW : in std_logic
     );
-End component;
+end component;
 
 component Reg_IFID is
 	port(
@@ -207,104 +215,108 @@ component Reg_IFID is
 		out_pcPlus4		: out integer;
 		StallD			:  in std_logic
 		);
-	end component;
+end component;
 
-		signal clk : std_logic := '0';
-		signal InstructionReady : std_logic := '0';
-		signal PCF : integer := 0;
-		signal PCIn : integer := 0;
-		signal Instruction : STD_LOGIC_VECTOR(register_size DOWNTO 0);
-		signal InstrD : STD_LOGIC_VECTOR(register_size DOWNTO 0);
-		signal PCPrime : integer;
-		signal PCPlus4f : integer;
-		signal PCplus4d : integer;
-		signal PCReady : STD_LOGIC;
+--Declaration of signals
+signal clk : std_logic := '0';
+signal InstructionReady : std_logic := '0';--
+signal PCF : integer := 0;--
+signal PCIn : integer := 0;--
+signal Instruction : STD_LOGIC_VECTOR(register_size DOWNTO 0);--
+signal InstrD : STD_LOGIC_VECTOR(register_size DOWNTO 0);--
+signal PCPrime : integer;--MUST ENTER WB-IF REGISTER
+signal PCPlus4f : integer;--
+signal PCplus4d : integer;--
+signal PCReady : STD_LOGIC;--
+signal StallF : std_logic;--
+signal StallD  : std_logic;--
+signal BranchD : std_logic;--
+signal ForwardAD : std_logic;--
+signal ForwardBD : std_logic;--
+signal rsD : std_logic_vector(4 downto 0);--
+signal rtD : std_logic_vector(4 downto 0);--
+signal rdD : std_logic_vector(4 downto 0);--
+signal FlushE :  std_logic;--
+signal rsE : std_logic_vector(4 downto 0);--
+signal rtE : std_logic_vector(4 downto 0);--
+signal rdE : std_logic_vector(4 downto 0);--
+signal ForwardAE : std_logic_vector(1 downto 0);--
+signal ForwardBE : std_logic_vector(1 downto 0);--
+signal WriteRegE : std_logic_vector(4 downto 0);--
+signal MemToRegE : std_logic;--
+signal RegWriteE : std_logic;--
 
-	signal StallF : std_logic;
-        signal StallD  : std_logic;
-        signal BranchD : std_logic;
-        signal ForwardAD : std_logic;
-        signal ForwardBD : std_logic;
-        signal rsD : std_logic_vector(4 downto 0);
-        signal rtD : std_logic_vector(4 downto 0);
-	signal rdD : std_logic_vector(4 downto 0);
-        signal FlushE :  std_logic;
-        signal rsE : std_logic_vector(4 downto 0);
-        signal rtE : std_logic_vector(4 downto 0);
-        signal rdE : std_logic_vector(4 downto 0);
-        signal ForwardAE : std_logic_vector(1 downto 0);
-        signal ForwardBE : std_logic_vector(1 downto 0);
-        signal WriteRegE : std_logic_vector(4 downto 0);
-        signal MemToRegE : std_logic;
-        signal RegWriteE : std_logic;
+signal WriteRegM : std_logic_vector(4 downto 0);--
+signal MemToRegM : std_logic;--
+signal RegWriteM : std_logic;--
+signal MemWriteM : std_logic;--
+signal writeDataM : std_logic_vector(register_size downto 0);--  
+signal WriteRegW : std_logic_vector(4 downto 0);--
+signal RegWriteW : std_logic;--
 
-        signal WriteRegM : std_logic_vector(4 downto 0);
-        signal MemToRegM : std_logic;
-        signal RegWriteM : std_logic;
-	signal memWriteM : std_logic;
-	signal writeDataM : std_logic_vector(register_size downto 0);  
-        signal WriteRegW : std_logic_vector(4 downto 0);
-        signal RegWriteW : std_logic;
+signal memoryReady : std_logic;--
+signal fetchNextMemory : std_logic;
+signal readOrWrite : std_logic;
+signal dataToWrite : std_logic_vector(register_size downto 0);
+signal memoryOutput : std_logic_vector(register_size downto 0);
 
-		signal memoryIn : integer;
-		signal memoryReady : std_logic;
-		signal fetchNextMemory : std_logic;
-		signal readOrWrite : std_logic;
-		signal dataToWrite : std_logic_vector(register_size downto 0);
-		signal memoryOutput : std_logic_vector(register_size downto 0);
-		
-		signal SignImmDSLL2 : std_logic_vector(register_size downto 0);
-		signal PCBranchD : integer;
-		signal PCSrcD: STD_LOGIC; 
-		signal regwriteD: STD_LOGIC; 
-		signal memtoregD: STD_LOGIC;
-		signal memwriteD:  STD_LOGIC;
-		signal alucontrolD:  STD_LOGIC_VECTOR(3 downto 0);
-		signal alusrcD:  STD_LOGIC;
-		signal regdstD:  STD_LOGIC;
-		signal jumpD:  STD_LOGIC;
-		signal SignImmD : std_logic_vector(register_size downto 0);
-		signal RD1d : std_logic_vector(register_size downto 0);
-		signal RD2d : std_logic_vector(register_size downto 0);
-		signal EqualD : std_logic;
-		signal MuxAOut : std_logic_vector(register_size downto 0);
-		signal MuxBOut : std_logic_vector(register_size downto 0);
-		
-		signal MemWriteE :std_logic;	
-		signal aluControlE:std_logic_vector(3 downto 0);
-		signal aluSrcE: std_logic;
-		signal regDstE :std_logic;
-		signal signImmE :std_logic_vector(register_size downto 0);
-		signal SrcAE : STD_LOGIC_VECTOR(register_size downto 0);
-		signal SrcBE : STD_LOGIC_VECTOR(register_size downto 0);
-		signal WriteDataE : STD_LOGIC_VECTOR(register_size downto 0);
-		signal RD1e : std_logic_vector(register_size downto 0);
-		signal RD2e : std_logic_vector(register_size downto 0);
-		signal ALUOutE : std_logic_vector(register_size downto 0);
-		signal ALUOutM : STD_LOGIC_VECTOR(register_size downto 0);
-		signal resultW : STD_LOGIC_vector(register_size downto 0);
-		signal nextAddress : integer;
+signal SignImmDSLL2 : std_logic_vector(register_size downto 0);--
+signal PCBranchD : integer;--
+signal PCSrcD: STD_LOGIC;--
+signal RegWriteD: STD_LOGIC; --
+signal MemToRegD: STD_LOGIC;--
+signal MemWriteD:  STD_LOGIC;--
+signal alucontrolD:  STD_LOGIC_VECTOR(3 downto 0);--
+signal alusrcD:  STD_LOGIC;--
+signal regdstD:  STD_LOGIC;--
+signal jumpD:  STD_LOGIC;
+signal SignImmD : std_logic_vector(register_size downto 0);--
+signal RD1d : std_logic_vector(register_size downto 0);--
+signal RD2d : std_logic_vector(register_size downto 0);--
+signal EqualD : std_logic;--
+signal MuxAOut : std_logic_vector(register_size downto 0);--
+signal MuxBOut : std_logic_vector(register_size downto 0);--
+
+signal MemWriteE :std_logic;--	
+signal aluControlE:std_logic_vector(3 downto 0);--
+signal aluSrcE: std_logic;--
+signal regDstE :std_logic;--
+signal signImmE :std_logic_vector(register_size downto 0);--
+signal SrcAE : STD_LOGIC_VECTOR(register_size downto 0);--
+signal SrcBE : STD_LOGIC_VECTOR(register_size downto 0);--
+signal WriteDataE : STD_LOGIC_VECTOR(register_size downto 0);--
+signal RD1e : std_logic_vector(register_size downto 0);--
+signal RD2e : std_logic_vector(register_size downto 0);--
+signal ALUOutE : std_logic_vector(register_size downto 0);--
+signal ALUOutM : STD_LOGIC_VECTOR(register_size downto 0) := "00000000000000000000000000000000";--
+signal resultW : STD_LOGIC_vector(register_size downto 0);--
+signal nextAddress : integer;
+signal ALUOutMInt : integer;
+
 begin
+
 nextAddress<=to_integer(unsigned(writedatam));
 PCPlus4f<=PCF+4;
 rsD<=instrD(25 downto 21);
 rtD<=instrD(20 downto 16);
 rdD<=instrD(15 downto 11);
-rsD<=instrD(25 downto 21);
 SignImmDSLL2<=SignImmD(register_size-2 downto 0)&"00";
 EqualD<=to_std_logic(MuxAOut=MuxBOut);
 PCSrcD<=(BranchD AND EqualD);
 PCBranchD<=to_integer(signed(SignImmDSLL2))+PCplus4D;
+ALUOutMInt<=to_integer(unsigned(ALUOutM));
 
---PCSrcD_Mux : Mux
---	Port map(
---		D0=>PCPlus4F,
---		D1=>AluOutM,		
---		S=>PCSrcD,
---		Y=>PCPrime
---	);
+PCPrime<=PCPlus4F when PCSrcD='0' else
+		PCBranchD when PCSrcD='1' else
+		PCPlus4F;
 
-
+WriteRegE_Mux : Mux_5bit
+	Port map(
+		D0=>rtE,
+		D1=>rdE,		
+		S=>RegDstE,
+		Y=>WriteRegE
+	);
 
 muxA : Mux
 	Port map(
@@ -355,7 +367,7 @@ PORT MAP(
 	reset=>'0',
 	writeEnable=>InstructionReady,
 	PCReady=>PCReady,
-	PCIn=>PCF,
+	PCIn=>PCPrime,
 	PCOut=>PCF
 );
 
@@ -377,17 +389,17 @@ ifid : reg_ifid
 		pcPlus4=>pcPlus4f,
 		out_instrD=>instrd,
 		out_pcPlus4=>pcplus4d,
-		stallD=>stalld
+		stallD=>stallD
 		);
 
 dataMem: DataMemory 
 PORT MAP(
 	clk=>clk,
-	nextAddress=>nextAddress,
+	nextAddress=>ALUOutMInt,
 	instReady=>memoryReady,
 	fetchNext=>fetchNextMemory,
-	readOrWrite=>memwritem,
-	dataToWrite=>aluoutm,
+	readOrWrite=>memWritem,
+	dataToWrite=>writeDataM,
 	output=>memoryOutput
 );
 
@@ -457,7 +469,7 @@ idex : reg_idex
         rdD=>rdd,
         signImmD=>signImmD,
 
-	rd1e=>rd1e,
+		rd1e=>rd1e,
         rd2e=>rd2e,
         regWriteE=>regwriteE,
         memToRegE=>MemToRegE,

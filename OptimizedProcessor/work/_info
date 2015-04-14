@@ -563,7 +563,7 @@ R93
 R14
 R15
 Emipscpu
-Z94 w1426823258
+Z94 w1429034454
 R16
 R1
 R4
@@ -572,14 +572,14 @@ R6
 Z95 8C:/Users/James/Desktop/pipelinedCPU/MIPSCPU.vhd
 Z96 FC:/Users/James/Desktop/pipelinedCPU/MIPSCPU.vhd
 l0
-L5
-Vh>4_b<Cei9PXgIkJU?LH42
-!s100 cX5Ko7LBMBHjk]l6m[4_N1
+L6
+V=DbG6nLETjhiHmP8QXoIE3
+!s100 NAgn?Ak8dJ^j7b2<0a1R90
 R9
 32
-Z97 !s110 1426823261
+Z97 !s110 1429034459
 !i10b 1
-Z98 !s108 1426823261.712000
+Z98 !s108 1429034459.329000
 Z99 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/MIPSCPU.vhd|
 Z100 !s107 C:/Users/James/Desktop/pipelinedCPU/MIPSCPU.vhd|
 !i113 1
@@ -590,11 +590,11 @@ R16
 R1
 R4
 R5
-DEx4 work 7 mipscpu 0 22 h>4_b<Cei9PXgIkJU?LH42
-l287
-L8
-VBlIFhgRRfIcEhbIhF4oh83
-!s100 hX38zYc^F@:=41K`dP>RZ1
+Z101 DEx4 work 7 mipscpu 0 22 =DbG6nLETjhiHmP8QXoIE3
+l296
+L9
+VcTWz:lJJzZ2YD<:^Hdz;<1
+!s100 V]8z^d4>o<bLY@hH3fe1[3
 R9
 32
 R97
@@ -616,7 +616,7 @@ VC>Qb=E6>LR8:S@aIEEW3d1
 !s100 mJGh92T:K1=W=emWDllY00
 R9
 32
-Z101 !s110 1426821018
+Z102 !s110 1426821018
 !i10b 1
 !s108 1426821018.570000
 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/MIPSCPU_constants.vhd|
@@ -625,24 +625,24 @@ Z101 !s110 1426821018
 R14
 R15
 Emux
-Z102 w1426819620
+Z103 w1426819620
 R1
 R4
 R5
 R6
-Z103 8C:/Users/James/Desktop/pipelinedCPU/mux.vhd
-Z104 FC:/Users/James/Desktop/pipelinedCPU/mux.vhd
+Z104 8C:/Users/James/Desktop/pipelinedCPU/mux.vhd
+Z105 FC:/Users/James/Desktop/pipelinedCPU/mux.vhd
 l0
 L6
 VHWVKDhe41=emj>fE1f7AH1
 !s100 :@@B<7]egD0=0M0[4BE^z1
 R9
 32
-Z105 !s110 1426821034
+Z106 !s110 1426821034
 !i10b 1
-Z106 !s108 1426821034.731000
-Z107 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/mux.vhd|
-Z108 !s107 C:/Users/James/Desktop/pipelinedCPU/mux.vhd|
+Z107 !s108 1426821034.731000
+Z108 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/mux.vhd|
+Z109 !s107 C:/Users/James/Desktop/pipelinedCPU/mux.vhd|
 !i113 1
 R14
 R15
@@ -657,32 +657,32 @@ VDVNV:VI=WL`RE<dz>h9Oo3
 !s100 z`cXG[^MSK=K;<Cb@fTLR2
 R9
 32
-R105
-!i10b 1
 R106
+!i10b 1
 R107
 R108
+R109
 !i113 1
 R14
 R15
 Emux_3
-Z109 w1426818086
+Z110 w1426818086
 R4
 R5
 R6
-Z110 8C:/Users/James/Desktop/pipelinedCPU/Mux_3.vhd
-Z111 FC:/Users/James/Desktop/pipelinedCPU/Mux_3.vhd
+Z111 8C:/Users/James/Desktop/pipelinedCPU/Mux_3.vhd
+Z112 FC:/Users/James/Desktop/pipelinedCPU/Mux_3.vhd
 l0
 L5
 VdIgeGYNQYn8fRz7YV76ah3
 !s100 W203KUH@YNm0?6FN@RBJ@2
 R9
 32
-Z112 !s110 1426821041
+Z113 !s110 1426821041
 !i10b 1
-Z113 !s108 1426821041.397000
-Z114 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/Mux_3.vhd|
-Z115 !s107 C:/Users/James/Desktop/pipelinedCPU/Mux_3.vhd|
+Z114 !s108 1426821041.397000
+Z115 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/Mux_3.vhd|
+Z116 !s107 C:/Users/James/Desktop/pipelinedCPU/Mux_3.vhd|
 !i113 1
 R14
 R15
@@ -696,34 +696,75 @@ VmB`^BXNY<0BJe2:G0IF4:0
 !s100 I5AUTCW>HfkA:]ZC7jIA70
 R9
 32
-R112
-!i10b 1
 R113
+!i10b 1
 R114
 R115
+R116
+!i113 1
+R14
+R15
+Emux_5bit
+Z117 w1429029709
+R1
+R4
+R5
+R6
+Z118 8C:/Users/James/Desktop/pipelinedCPU/Mux_5bit.vhd
+Z119 FC:/Users/James/Desktop/pipelinedCPU/Mux_5bit.vhd
+l0
+L7
+VC:bfCBI5o8>gNfAVZXQ;o0
+!s100 OgDi7JgmCh27kiDD7zE7h2
+R9
+32
+!s110 1429029812
+!i10b 1
+Z120 !s108 1429029812.925000
+Z121 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/Mux_5bit.vhd|
+Z122 !s107 C:/Users/James/Desktop/pipelinedCPU/Mux_5bit.vhd|
+!i113 1
+R14
+R15
+Abehave
+R1
+R4
+R5
+DEx4 work 8 mux_5bit 0 22 C:bfCBI5o8>gNfAVZXQ;o0
+l16
+L15
+VhK0Q^OIIVm@mDcLa3GZgE0
+!s100 A[gooRRkl`2QcGel5g[z@2
+R9
+32
+!s110 1429029813
+!i10b 1
+R120
+R121
+R122
 !i113 1
 R14
 R15
 Eprogramcounter
-Z116 w1426721970
+Z123 w1426721970
 R16
 R1
 R4
 R5
 R6
-Z117 8C:/Users/James/Desktop/pipelinedCPU/programCounter.vhd
-Z118 FC:/Users/James/Desktop/pipelinedCPU/programCounter.vhd
+Z124 8C:/Users/James/Desktop/pipelinedCPU/programCounter.vhd
+Z125 FC:/Users/James/Desktop/pipelinedCPU/programCounter.vhd
 l0
 L6
 VG=aTbeV_aBBiXYW_Qb_a^2
 !s100 HK87G29]RkLZP1QD]INTU2
 R9
 32
-R101
+R102
 !i10b 1
-Z119 !s108 1426821018.772000
-Z120 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/programCounter.vhd|
-Z121 !s107 C:/Users/James/Desktop/pipelinedCPU/programCounter.vhd|
+Z126 !s108 1426821018.772000
+Z127 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/programCounter.vhd|
+Z128 !s107 C:/Users/James/Desktop/pipelinedCPU/programCounter.vhd|
 !i113 1
 R14
 R15
@@ -739,34 +780,34 @@ V8<Eg]odDlH_ZihIE8B>5m3
 !s100 hhHA3OEAfhRbUZQ[FUo^O0
 R9
 32
-R101
+R102
 !i10b 1
-R119
-R120
-R121
+R126
+R127
+R128
 !i113 1
 R14
 R15
 Ereg_exmem
-Z122 w1426791844
+Z129 w1426791844
 R1
 R16
 R4
 R5
 R6
-Z123 8C:/Users/James/Desktop/pipelinedCPU/reg_exmem.vhd
-Z124 FC:/Users/James/Desktop/pipelinedCPU/reg_exmem.vhd
+Z130 8C:/Users/James/Desktop/pipelinedCPU/reg_exmem.vhd
+Z131 FC:/Users/James/Desktop/pipelinedCPU/reg_exmem.vhd
 l0
 L6
 VZOU;VHJJQe0QMOFQ@mB[H2
 !s100 12WY?OfJc601n3bQIJED70
 R9
 32
-Z125 !s110 1426821028
+Z132 !s110 1426821028
 !i10b 1
-Z126 !s108 1426821028.117000
-Z127 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/reg_exmem.vhd|
-Z128 !s107 C:/Users/James/Desktop/pipelinedCPU/reg_exmem.vhd|
+Z133 !s108 1426821028.117000
+Z134 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/reg_exmem.vhd|
+Z135 !s107 C:/Users/James/Desktop/pipelinedCPU/reg_exmem.vhd|
 !i113 1
 R14
 R15
@@ -782,34 +823,34 @@ VGB8QLP`Fz2:gU=RnKKYEM1
 !s100 7<Q]=<GL^X63`SfI3UhdB0
 R9
 32
-R125
+R132
 !i10b 1
-R126
-R127
-R128
+R133
+R134
+R135
 !i113 1
 R14
 R15
 Ereg_idex
-Z129 w1426820503
+Z136 w1426820503
 R1
 R16
 R4
 R5
 R6
-Z130 8C:/Users/James/Desktop/pipelinedCPU/reg_idex.vhd
-Z131 FC:/Users/James/Desktop/pipelinedCPU/reg_idex.vhd
+Z137 8C:/Users/James/Desktop/pipelinedCPU/reg_idex.vhd
+Z138 FC:/Users/James/Desktop/pipelinedCPU/reg_idex.vhd
 l0
 L6
 VdK;;@zWaJIzYV`F?RQlHG1
 !s100 XHL]I9hi8J:k721loT]nj2
 R9
 32
-Z132 !s110 1426821029
+Z139 !s110 1426821029
 !i10b 1
-Z133 !s108 1426821029.448000
-Z134 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/reg_idex.vhd|
-Z135 !s107 C:/Users/James/Desktop/pipelinedCPU/reg_idex.vhd|
+Z140 !s108 1426821029.448000
+Z141 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/reg_idex.vhd|
+Z142 !s107 C:/Users/James/Desktop/pipelinedCPU/reg_idex.vhd|
 !i113 1
 R14
 R15
@@ -825,33 +866,33 @@ V^^VZC=_zlDm3nVO9c>2kz1
 !s100 RJWngdiCL:1elZ;l^>fP]3
 R9
 32
-R132
+R139
 !i10b 1
-R133
-R134
-R135
+R140
+R141
+R142
 !i113 1
 R14
 R15
 Ereg_ifid
-Z136 w1426822846
+Z143 w1426822846
 R1
 R4
 R5
 R6
-Z137 8C:/Users/James/Desktop/pipelinedCPU/reg_ifid.vhd
-Z138 FC:/Users/James/Desktop/pipelinedCPU/reg_ifid.vhd
+Z144 8C:/Users/James/Desktop/pipelinedCPU/reg_ifid.vhd
+Z145 FC:/Users/James/Desktop/pipelinedCPU/reg_ifid.vhd
 l0
 L5
 VheZ6HoPN8f^W30Hj>07Nn1
 !s100 7R3MLO24]Y=nb]^z4U`cB1
 R9
 32
-Z139 !s110 1426822849
+Z146 !s110 1426822849
 !i10b 1
-Z140 !s108 1426822849.346000
-Z141 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/reg_ifid.vhd|
-Z142 !s107 C:/Users/James/Desktop/pipelinedCPU/reg_ifid.vhd|
+Z147 !s108 1426822849.346000
+Z148 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/reg_ifid.vhd|
+Z149 !s107 C:/Users/James/Desktop/pipelinedCPU/reg_ifid.vhd|
 !i113 1
 R14
 R15
@@ -866,33 +907,33 @@ V7i=R`gOgXO7>KLi1jf^TD0
 !s100 hnZ5N0DSn9NNeRQefkCF]1
 R9
 32
-R139
+R146
 !i10b 1
-R140
-R141
-R142
+R147
+R148
+R149
 !i113 1
 R14
 R15
 Ereg_memwb
-Z143 w1426791781
+Z150 w1426791781
 R1
 R4
 R5
 R6
-Z144 8C:/Users/James/Desktop/pipelinedCPU/reg_memwb.vhd
-Z145 FC:/Users/James/Desktop/pipelinedCPU/reg_memwb.vhd
+Z151 8C:/Users/James/Desktop/pipelinedCPU/reg_memwb.vhd
+Z152 FC:/Users/James/Desktop/pipelinedCPU/reg_memwb.vhd
 l0
 L5
 V91`5<2?5aAaU<:;Kc@=`60
 !s100 9X8iEci@VH@[CQV;JK;LZ2
 R9
 32
-Z146 !s110 1426821030
+Z153 !s110 1426821030
 !i10b 1
-Z147 !s108 1426821030.784000
-Z148 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/reg_memwb.vhd|
-Z149 !s107 C:/Users/James/Desktop/pipelinedCPU/reg_memwb.vhd|
+Z154 !s108 1426821030.784000
+Z155 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/reg_memwb.vhd|
+Z156 !s107 C:/Users/James/Desktop/pipelinedCPU/reg_memwb.vhd|
 !i113 1
 R14
 R15
@@ -907,34 +948,34 @@ VB<9@CdGan5ULjCgo0Fn9e0
 !s100 gOc?lB36>MkA_TUZ:@7aC2
 R9
 32
-R146
+R153
 !i10b 1
-R147
-R148
-R149
+R154
+R155
+R156
 !i113 1
 R14
 R15
 Eregisterfile
-Z150 w1426809936
+Z157 w1426809936
 R1
 R16
 R4
 R5
 R6
-Z151 8C:/Users/James/Desktop/pipelinedCPU/RegisterFile.vhd
-Z152 FC:/Users/James/Desktop/pipelinedCPU/RegisterFile.vhd
+Z158 8C:/Users/James/Desktop/pipelinedCPU/RegisterFile.vhd
+Z159 FC:/Users/James/Desktop/pipelinedCPU/RegisterFile.vhd
 l0
 L6
 VNBGRKQ7>9hTfQ17@AZ92d2
 !s100 K5fAJPbOfdV^3U8>0Z6_F0
 R9
 32
-Z153 !s110 1426811267
+Z160 !s110 1426811267
 !i10b 1
-Z154 !s108 1426811267.638000
-Z155 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/RegisterFile.vhd|
-Z156 !s107 C:/Users/James/Desktop/pipelinedCPU/RegisterFile.vhd|
+Z161 !s108 1426811267.638000
+Z162 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/RegisterFile.vhd|
+Z163 !s107 C:/Users/James/Desktop/pipelinedCPU/RegisterFile.vhd|
 !i113 1
 R14
 R15
@@ -950,11 +991,11 @@ V@b59OAM][6FIA>VYhhW0A1
 !s100 l8WP_ICI;7iWY?:>JN7Vi3
 R9
 32
-R153
+R160
 !i10b 1
-R154
-R155
-R156
+R161
+R162
+R163
 !i113 1
 R14
 R15
@@ -965,19 +1006,19 @@ R16
 R4
 R5
 R6
-Z157 8C:/Users/James/Desktop/pipelinedCPU/RF.vhd
-Z158 FC:/Users/James/Desktop/pipelinedCPU/RF.vhd
+Z164 8C:/Users/James/Desktop/pipelinedCPU/RF.vhd
+Z165 FC:/Users/James/Desktop/pipelinedCPU/RF.vhd
 l0
 L8
 VBSC7dd]2@58i9dVZ0Wf3G2
 !s100 7YX2n9M9WS]iF7L3KanH40
 R9
 32
-Z159 !s110 1426821038
+Z166 !s110 1426821038
 !i10b 1
-Z160 !s108 1426821038.688000
-Z161 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/RF.vhd|
-Z162 !s107 C:/Users/James/Desktop/pipelinedCPU/RF.vhd|
+Z167 !s108 1426821038.688000
+Z168 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/RF.vhd|
+Z169 !s107 C:/Users/James/Desktop/pipelinedCPU/RF.vhd|
 !i113 1
 R14
 R15
@@ -993,33 +1034,33 @@ VXUheZMWkYQZ<5`MDig@PG2
 !s100 7Loz]041nb54?iV;jbb9c0
 R9
 32
-R159
+R166
 !i10b 1
-R160
-R161
-R162
+R167
+R168
+R169
 !i113 1
 R14
 R15
 Esignextension
-Z163 w1426815270
+Z170 w1426815270
 R1
 R4
 R5
 R6
-Z164 8C:/Users/James/Desktop/pipelinedCPU/SignExtension.vhd
-Z165 FC:/Users/James/Desktop/pipelinedCPU/SignExtension.vhd
+Z171 8C:/Users/James/Desktop/pipelinedCPU/SignExtension.vhd
+Z172 FC:/Users/James/Desktop/pipelinedCPU/SignExtension.vhd
 l0
 L5
 VmaX<KGG^CclL1mWmGWWoa2
 !s100 8f`HoXz5GjiV5hBWJeWXB2
 R9
 32
-Z166 !s110 1426821032
+Z173 !s110 1426821032
 !i10b 1
-Z167 !s108 1426821032.095000
-Z168 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/SignExtension.vhd|
-Z169 !s107 C:/Users/James/Desktop/pipelinedCPU/SignExtension.vhd|
+Z174 !s108 1426821032.095000
+Z175 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/SignExtension.vhd|
+Z176 !s107 C:/Users/James/Desktop/pipelinedCPU/SignExtension.vhd|
 !i113 1
 R14
 R15
@@ -1034,11 +1075,11 @@ V2oVz>5=0G<@57dSlFTe[H2
 !s100 E2o]EKf217l?6WP:Pl56T3
 R9
 32
-R166
+R173
 !i10b 1
-R167
-R168
-R169
+R174
+R175
+R176
 !i113 1
 R14
 R15
@@ -1048,19 +1089,19 @@ R1
 R4
 R5
 R6
-Z170 8C:/Users/James/Desktop/pipelinedCPU/SignImmE.vhd
-Z171 FC:/Users/James/Desktop/pipelinedCPU/SignImmE.vhd
+Z177 8C:/Users/James/Desktop/pipelinedCPU/SignImmE.vhd
+Z178 FC:/Users/James/Desktop/pipelinedCPU/SignImmE.vhd
 l0
 L5
 V<C`cNQV79ii<5<RP6NK>S1
 !s100 Zk5lNm4I4PnachSRG_LOZ2
 R9
 32
-Z172 !s110 1426821025
+Z179 !s110 1426821025
 !i10b 1
-Z173 !s108 1426821025.478000
-Z174 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/SignImmE.vhd|
-Z175 !s107 C:/Users/James/Desktop/pipelinedCPU/SignImmE.vhd|
+Z180 !s108 1426821025.478000
+Z181 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/SignImmE.vhd|
+Z182 !s107 C:/Users/James/Desktop/pipelinedCPU/SignImmE.vhd|
 !i113 1
 R14
 R15
@@ -1075,32 +1116,32 @@ V:B0FkGl_MM@keYO=`U><T0
 !s100 8S;k7^N9:Nk=ZTNZbc]kQ2
 R9
 32
-R172
+R179
 !i10b 1
-R173
-R174
-R175
+R180
+R181
+R182
 !i113 1
 R14
 R15
 Etb_main_memory
-Z176 w1424600482
+Z183 w1424600482
 R4
 R5
 R6
-Z177 8C:/Users/James/Desktop/pipelinedCPU/tb_Main_Memory.vhd
-Z178 FC:/Users/James/Desktop/pipelinedCPU/tb_Main_Memory.vhd
+Z184 8C:/Users/James/Desktop/pipelinedCPU/tb_Main_Memory.vhd
+Z185 FC:/Users/James/Desktop/pipelinedCPU/tb_Main_Memory.vhd
 l0
 L6
 V_Uzjo[2Pl;jCYlfCg<QIC2
 !s100 f`AoabXbZgAc[hc>F`^lk0
 R9
 32
-Z179 !s110 1426821012
+Z186 !s110 1426821012
 !i10b 1
-Z180 !s108 1426821012.505000
-Z181 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/tb_Main_Memory.vhd|
-Z182 !s107 C:/Users/James/Desktop/pipelinedCPU/tb_Main_Memory.vhd|
+Z187 !s108 1426821012.505000
+Z188 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/James/Desktop/pipelinedCPU/tb_Main_Memory.vhd|
+Z189 !s107 C:/Users/James/Desktop/pipelinedCPU/tb_Main_Memory.vhd|
 !i113 1
 R14
 R15
@@ -1114,11 +1155,11 @@ VW]AO2F8Y?5OP7k7zEYmiS1
 !s100 YiO4VICS?4G6PaH[UMdQ:0
 R9
 32
-R179
+R186
 !i10b 1
-R180
-R181
-R182
+R187
+R188
+R189
 !i113 1
 R14
 R15
